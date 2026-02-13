@@ -1,10 +1,14 @@
 package org.zeta;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.zeta.model.Builder;
+import org.zeta.model.ProjectManager;
 import org.zeta.model.User;
 import org.zeta.dao.UserDao;
 import org.zeta.service.AuthenticationService;
+import org.zeta.views.BuilderView;
 import org.zeta.views.ClientView;
+import org.zeta.views.ProjectManagerView;
 
 import java.io.File;
 import java.io.IOException;
@@ -61,6 +65,14 @@ public class Main {
                         System.out.println("Welcome " + loggedInUser.getUsername());
                         if(Objects.equals(loggedInUser.getRole(), "CLIENT")){
                             ClientView.clientDashboard();
+
+                        }
+                        if(Objects.equals(loggedInUser.getRole(), "BUILDER")){
+                            BuilderView.builderDashboard();
+
+                        }
+                        if(Objects.equals(loggedInUser.getRole(), "PROJECTMANAGER")){
+                            ProjectManagerView.ProjectManagerDashboard();
 
                         }
                     }
