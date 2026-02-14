@@ -2,51 +2,51 @@ package org.zeta.service;
 import org.zeta.dao.UserDao;
 import org.zeta.model.Role;
 import org.zeta.model.User;
-
 import java.io.IOException;
+import java.util.List;
+import java.util.logging.Logger;
 
 public class AuthenticationService {
 
-    private UserDao userDAO;
+    private UserDao UserDao;
+    private static final Logger logger =
+            Logger.getLogger(AuthenticationService.class.getName());
 
-    public AuthenticationService(UserDao userDAO) {
-        this.userDAO = userDAO;
+    public AuthenticationService(UserDao UserDao) {
+        this.UserDao = UserDao;
     }
 
-    public boolean register(String username, String password, String confirmPassword, String role) throws IOException {
+    public boolean register(String username, String password, String confirmPassword, Role role) throws IOException {
 
         if (!password.equals(confirmPassword)) {
-            System.out.println("Passwords do not match!");
+            logger.warning("Passwords do not match!");
             return false;
         }
 
-        if (UserDao.userExists(username)) {
-            System.out.println("User already exists!");
+        if (UserDao.findByUsername(username)==null) {
+            logger.warning("User already exists!");
             return false;
         }
 
-        User user = new User(username, password, role, Role.BUILDER);
-        UserDao.addUser(user);
+        User user = new User(username, password, role);
+        UserDao.save(user);
 
-        System.out.println("Registration successful!");
+        logger.info("Registration successful!");
         return true;
     }
 
-    public User login(String username, String password) throws IOException {
+    public User login(String username, String password) {
 
-        User user = UserDao.getUser(username);
+        List<User> users = UserDao.getAll();
 
-        if (user == null) {
-            System.out.println("User not found!");
-            return null;
+        for (User user : users) {
+            if (user.getUsername().equalsIgnoreCase(username)
+                    && user.getPassword().equals(password)) {
+                return user;
+            }
         }
 
-        if (!user.getPassword().equals(password)) {
-            System.out.println("Invalid password!");
-            return null;
-        }
-
-        System.out.println("Login successful!");
-        return user;
+        return null;
     }
+
 }

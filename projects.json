@@ -1,0 +1,19 @@
+[ {
+  "projectId" : "448cddd5-880f-4f04-82d6-1e03cfcde92d",
+  "projectName" : "Brigade",
+  "startDate" : null,
+  "endDate" : null,
+  "status" : "Submitted",
+  "clientId" : "73a0c0af-dab3-40ef-8117-e5b0a46aa4cd",
+  "projectManagerId" : null,
+  "builderId" : null
+}, {
+  "projectId" : "08472333-01e8-435c-9bc1-8fbb8794b32b",
+  "projectName" : "satva",
+  "startDate" : null,
+  "endDate" : null,
+  "status" : "Submitted",
+  "clientId" : "73a0c0af-dab3-40ef-8117-e5b0a46aa4cd",
+  "projectManagerId" : null,
+  "builderId" : null
+} ]

@@ -1,81 +1,48 @@
 package org.zeta.dao;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.zeta.model.User;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class UserDao {
+public class UserDao extends BaseDao<User> {
 
-    private static final String FILE_PATH = "users.json";
-    private static final ObjectMapper mapper = new ObjectMapper();
-
-    // Get all users from file
-    private static List<User> getAllUsers() throws IOException {
-        File file = new File(FILE_PATH);
-
-        if (!file.exists()) {
-            file.createNewFile();
-            mapper.writeValue(file, new ArrayList<User>());
-        }
-
-        if (file.length() == 0) {
-            return new ArrayList<>();
-        }
-
-        return mapper.readValue(file, new TypeReference<List<User>>() {});
+    public UserDao(String fileName) {
+        super(fileName, new TypeReference<List<User>>() {});
     }
 
-    // Save all users back to file
-    private static void saveAllUsers(List<User> users) throws IOException {
-        mapper.writeValue(new File(FILE_PATH), users);
+    public void save(User user) {
+        add(user);
     }
 
-    // Add user
-    public static void addUser(User user) throws IOException {
-
-        List<User> users = getAllUsers();
-
-        // check duplicate
-        for (User u : users) {
-            if (u.getUsername().equalsIgnoreCase(user.getUsername())) {
-                throw new RuntimeException("User already exists");
-            }
-        }
-
-        users.add(user);
-        saveAllUsers(users);
+    public void delete(User user) {
+        remove(user);
     }
 
-    // Get user by username
-    public static User getUser(String username) throws IOException {
-
-        List<User> users = getAllUsers();
-
-        for (User u : users) {
-            if (u.getUsername().equalsIgnoreCase(username)) {
-                return u;
-            }
-        }
-
-        return null;
+    public Optional<User> findById(String id) {
+        return dataList.stream()
+                .filter(u -> u.getId().equals(id))
+                .findFirst();
     }
 
-    // Check if user exists
-    public static boolean userExists(String username) throws IOException {
+    public Optional<User> findByUsername(String username) {
+        return dataList.stream()
+                .filter(u -> u.getUsername().equalsIgnoreCase(username))
+                .findFirst();
+    }
 
-        List<User> users = getAllUsers();
+    public List<User> findByRole(String role) {
+        return dataList.stream()
+                .filter(u -> u.getRole().name().equalsIgnoreCase(role))
+                .toList();
+    }
 
-        for (User u : users) {
-            if (u.getUsername().equalsIgnoreCase(username)) {
-                return true;
-            }
-        }
-
-        return false;
+    public void update(User updatedUser) {
+        findById(updatedUser.getId()).ifPresent(existing -> {
+            dataList.remove(existing);
+            dataList.add(updatedUser);
+            saveToFile();
+        });
     }
 }
