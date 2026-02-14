@@ -6,4 +6,8 @@
   "username" : "qwerty",
   "password" : "asdf",
   "role" : "BUILDER"
+}, {
+  "username" : "abc",
+  "password" : "abc",
+  "role" : "CLIENT"
 } ]

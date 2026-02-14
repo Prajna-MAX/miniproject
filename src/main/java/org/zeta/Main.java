@@ -24,9 +24,10 @@ public class Main {
         UserDao userDAO = new UserDao();
         AuthenticationService authService = new AuthenticationService(userDAO);
         ObjectMapper mapper = new ObjectMapper();
+        User loggedInUser = null;
 
+        do{
 
-        while (true) {
             System.out.println("Please choose:");
             System.out.println("1. Register");
             System.out.println("2. Login");
@@ -59,7 +60,7 @@ public class Main {
                     System.out.println("Enter password:");
                     String loginPassword = sc.nextLine();
 
-                    User loggedInUser = authService.login(loginUsername, loginPassword);
+                    loggedInUser = authService.login(loginUsername, loginPassword);
 
                     if (loggedInUser != null) {
                         System.out.println("Welcome " + loggedInUser.getUsername());
@@ -81,6 +82,6 @@ public class Main {
                 default:
                     System.out.println("Invalid choice");
             }
-        }
+        }while(loggedInUser==null);
     }
 }

@@ -1,0 +1,111 @@
+package org.zeta.model;
+import java.time.LocalDate;
+
+public class Project {
+
+    private String projectId;
+    private String projectName;
+    private String description;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private ProjectStatus status;
+    private String clientId;
+    private String projectManagerId;
+    private String builderId;
+
+
+    public Project(String projectId,
+                   String projectName,
+                   String description,
+                   LocalDate startDate,
+                   LocalDate endDate,
+                   ProjectStatus status,
+                   String clientId,
+                   String projectManagerId,
+                   String builderId) {
+
+        this.projectId = projectId;
+        this.projectName = projectName;
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.status = status;
+        this.clientId = clientId;
+        this.projectManagerId = projectManagerId;
+        this.builderId = builderId;
+    }
+
+    // Getters & Setters
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public ProjectStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ProjectStatus status) {
+        this.status = status;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getProjectManagerId() {
+        return projectManagerId;
+    }
+
+    public void setProjectManagerId(String projectManagerId) {
+        this.projectManagerId = projectManagerId;
+    }
+
+    public String getBuilderId() {
+        return builderId;
+    }
+
+    public void setBuilderId(String builderId) {
+        this.builderId = builderId;
+    }
+}
