@@ -57,7 +57,6 @@ public class Main {
 
                     System.out.println("Enter password:");
                     String loginPassword = sc.nextLine();
-
                     loggedInUser = authService.login(loginUsername, loginPassword);
 
                     if (loggedInUser != null) {

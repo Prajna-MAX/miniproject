@@ -16,17 +16,17 @@ public class ProjectDao extends BaseDao<Project> {
         super(fileName, new TypeReference<List<Project>>() {});
     }
 
-    public void save(Project project) {
+    public void saveProject(Project project) {
         add(project);
     }
 
-    public void delete(Project project) {
+    public void deleteProject(Project project) {
         remove(project);
     }
 
-    public Optional<Project> findById(String id) {
+    public Optional<Project> findById(String projectId) {
         return dataList.stream()
-                .filter(p -> p.getProjectId().equals(id))
+                .filter(p -> p.getProjectId().equals(projectId))
                 .findFirst();
     }
 

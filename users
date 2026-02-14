@@ -3,4 +3,14 @@
   "username" : "vinutha",
   "password" : "asdf",
   "role" : "CLIENT"
+}, {
+  "id" : "2be27a1f-a0b1-4adb-883a-a7f530082ab1",
+  "username" : "prajna",
+  "password" : "asdf",
+  "role" : "CLIENT"
+}, {
+  "id" : "310f90d8-df57-4e71-8bc0-eca300664730",
+  "username" : "qwerty",
+  "password" : "asdf",
+  "role" : "PROJECT_MANAGER"
 } ]
