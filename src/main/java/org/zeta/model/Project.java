@@ -1,56 +1,45 @@
 package org.zeta.model;
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Project {
 
-    private String projectId;
-    private String projectName;
+    private String id;
+    private String name;
     private String description;
     private LocalDate startDate;
-    private LocalDate endDate;
-    private ProjectStatus status;
+    private PROJECT_STATUS status;
     private String clientId;
-    private String projectManagerId;
     private String builderId;
 
 
-    public Project(String projectId,
-                   String projectName,
+    public Project(String id,
+                   String name,
                    String description,
                    LocalDate startDate,
-                   LocalDate endDate,
-                   ProjectStatus status,
+                   PROJECT_STATUS status,
                    String clientId,
-                   String projectManagerId,
                    String builderId) {
 
-        this.projectId = projectId;
-        this.projectName = projectName;
+        this.id = UUID.randomUUID().toString();
+        this.name = name;
         this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.startDate = LocalDate.now();
         this.status = status;
         this.clientId = clientId;
-        this.projectManagerId = projectManagerId;
         this.builderId = builderId;
     }
 
-    // Getters & Setters
-
-    public String getProjectId() {
-        return projectId;
+    public String getId() {
+        return id;
     }
 
-    public void setProjectId(String projectId) {
-        this.projectId = projectId;
+    public String getName() {
+        return name;
     }
 
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -69,19 +58,11 @@ public class Project {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public ProjectStatus getStatus() {
+    public PROJECT_STATUS getStatus() {
         return status;
     }
 
-    public void setStatus(ProjectStatus status) {
+    public void setStatus(PROJECT_STATUS status) {
         this.status = status;
     }
 
@@ -93,14 +74,6 @@ public class Project {
         this.clientId = clientId;
     }
 
-    public String getProjectManagerId() {
-        return projectManagerId;
-    }
-
-    public void setProjectManagerId(String projectManagerId) {
-        this.projectManagerId = projectManagerId;
-    }
-
     public String getBuilderId() {
         return builderId;
     }
@@ -109,3 +82,4 @@ public class Project {
         this.builderId = builderId;
     }
 }
+

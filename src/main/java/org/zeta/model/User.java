@@ -1,26 +1,35 @@
 package org.zeta.model;
 
+import java.util.UUID;
+
 public class User {
 
-    private String username;
+    private String id;
+    private String name;
     private String password;
-    private String role;
+    private ROLE role;
 
 
-    public User() {}
+    public User() {
+    }
 
-    public User(String username, String password, String role) {
-        this.username = username;
+    public User(String name, String password, ROLE role) {
+        this.id = UUID.randomUUID().toString();
+        this.name = name;
         this.password = password;
         this.role = role;
     }
 
-    public String getUsername() {
-        return username;
+    public String getId() {
+        return id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -31,11 +40,11 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
+    public ROLE getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(ROLE role) {
         this.role = role;
     }
 }

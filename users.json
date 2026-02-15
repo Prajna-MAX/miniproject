@@ -10,4 +10,8 @@
   "username" : "abc",
   "password" : "abc",
   "role" : "CLIENT"
+}, {
+  "username" : "aamir",
+  "password" : "hello",
+  "role" : "BUILDER"
 } ]

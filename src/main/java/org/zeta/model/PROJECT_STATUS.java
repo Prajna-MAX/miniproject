@@ -1,6 +1,6 @@
 package org.zeta.model;
 
-public enum ProjectStatus {
+public enum PROJECT_STATUS {
     Upcoming,
     InProgress,
     Completed

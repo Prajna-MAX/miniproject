@@ -1,6 +1,6 @@
 package org.zeta.model;
 
-public enum Role {
+public enum ROLE {
     BUILDER,
     PROJECT_MANAGER,
     CLIENT
