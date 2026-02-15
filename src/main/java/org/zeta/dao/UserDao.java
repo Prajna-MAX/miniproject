@@ -1,6 +1,8 @@
 package org.zeta.dao;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import org.zeta.model.Project;
+import org.zeta.model.Role;
 import org.zeta.model.User;
 
 import java.util.List;
@@ -8,8 +10,8 @@ import java.util.Optional;
 
 public class UserDao extends BaseDao<User> {
 
-    public UserDao(String fileName) {
-        super(fileName, new TypeReference<List<User>>() {});
+    public UserDao() {
+        super("users.json", new TypeReference<List<User>>() {});
     }
 
     public void save(User user) {
@@ -25,6 +27,11 @@ public class UserDao extends BaseDao<User> {
                 .filter(u -> u.getId().equals(id))
                 .findFirst();
     }
+    public Optional<User> findIdbyName(String name) {
+        return dataList.stream()
+                .filter(u -> u.getUsername().equals(name))
+                .findFirst();
+    }
 
     public Optional<User> findByUsername(String username) {
         return dataList.stream()
@@ -32,9 +39,9 @@ public class UserDao extends BaseDao<User> {
                 .findFirst();
     }
 
-    public List<User> findByRole(String role) {
+    public List<User> findByRole(Role role) {
         return dataList.stream()
-                .filter(u -> u.getRole().name().equalsIgnoreCase(role))
+                .filter(u -> u.getRole().name().equalsIgnoreCase(String.valueOf(role)))
                 .toList();
     }
 

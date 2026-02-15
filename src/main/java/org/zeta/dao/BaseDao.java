@@ -2,6 +2,7 @@ package org.zeta.dao;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.zeta.model.Project;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,7 +48,7 @@ public abstract class BaseDao<T> {
         return new ArrayList<>(dataList);
     }
 
-    protected void add(T obj) {
+    public void add(T obj) {
         dataList.add(obj);
         saveToFile();
     }

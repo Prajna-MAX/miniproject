@@ -19,12 +19,11 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        UserDao userDAO = new UserDao("users");
+        UserDao userDAO = new UserDao();
         AuthenticationService authService = new AuthenticationService(userDAO);
         ObjectMapper mapper = new ObjectMapper();
-        User loggedInUser = null;
 
-        do{
+        while(true){
 
             System.out.println("Please choose:");
             System.out.println("1. Register");
@@ -57,28 +56,33 @@ public class Main {
 
                     System.out.println("Enter password:");
                     String loginPassword = sc.nextLine();
-                    loggedInUser = authService.login(loginUsername, loginPassword);
+                    User loggedInUser = authService.login(loginUsername, loginPassword);
 
                     if (loggedInUser != null) {
                         System.out.println("Welcome " + loggedInUser.getUsername());
                         if(Objects.equals(loggedInUser.getRole(), Role.CLIENT)){
-                            ClientView.clientDashboard(loggedInUser);
+                           ClientView.clientDashboard(loggedInUser);
 
                         }
                         if(Objects.equals(loggedInUser.getRole(),Role.BUILDER)){
-                            BuilderView.builderDashboard();
+                            BuilderView.builderDashboard(loggedInUser);
 
                         }
                         if(Objects.equals(loggedInUser.getRole(), Role.PROJECT_MANAGER)){
-                            ProjectManagerView.ProjectManagerDashboard();
+                            ProjectManagerView.ProjectManagerDashboard(loggedInUser);
 
                         }
                     }
                     break;
 
+                case 3:
+                    System.out.println("Exiting application...");
+                    System.exit(0);
+                    break;
+
                 default:
                     System.out.println("Invalid choice");
             }
-        }while(loggedInUser==null);
+        }
     }
 }

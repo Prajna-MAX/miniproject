@@ -1,0 +1,36 @@
+[ {
+  "id" : "aac51457-0fca-41c2-8f10-94286808b9a3",
+  "username" : "prajna",
+  "password" : "asdf",
+  "role" : "CLIENT"
+}, {
+  "id" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd",
+  "username" : "prags",
+  "password" : "asdf",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "25861b10-e8d7-4a5f-b28c-582778c26bc3",
+  "username" : "abc",
+  "password" : "asdf",
+  "role" : "CLIENT"
+}, {
+  "id" : "a72044ff-ee40-4215-a6d7-9a57b62a6156",
+  "username" : "qwerty",
+  "password" : "asdf",
+  "role" : "CLIENT"
+}, {
+  "id" : "f9b090c7-7ad5-4e71-9e38-ebfc89c311ec",
+  "username" : "jkl",
+  "password" : "asdf",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "847df785-01e1-4bb2-8d28-b061e1e64256",
+  "username" : "sam",
+  "password" : "asdf",
+  "role" : "BUILDER"
+}, {
+  "id" : "731175b6-74bd-4fe0-b58d-1e963e4a26aa",
+  "username" : "rahul",
+  "password" : "asdf",
+  "role" : "BUILDER"
+} ]

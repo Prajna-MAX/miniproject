@@ -47,6 +47,19 @@ public class ProjectDao extends BaseDao<Project> {
                 .filter(p -> p.getStatus().name().equalsIgnoreCase(status))
                 .toList();
     }
+    public void assignBuilder(String projectId, String builderId) {
+
+        Optional<Project> projectOpt = findById(projectId);
+
+        if (projectOpt.isEmpty()) {
+            System.out.println("Project not found.");
+            return;
+        }
+
+        Project project = projectOpt.get();
+
+        update(project);
+    }
 
     public void update(Project updatedProject) {
         findById(updatedProject.getProjectId()).ifPresent(existing -> {
