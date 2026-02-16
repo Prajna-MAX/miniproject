@@ -25,4 +25,13 @@ public class CommonValidator {
             throw new ValidationException(fieldName + " is not a valid UUID.");
         }
     }
+    public static int validateInteger(String input, String fieldName) {
+
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new ValidationException(fieldName + " must be a valid number.");
+        }
+    }
+
 }
