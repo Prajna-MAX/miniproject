@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.zeta.dao.UserDao;
 import org.zeta.model.Role;
 import org.zeta.model.User;
-import org.zeta.service.AuthenticationService;
+import org.zeta.service.implementation.AuthenticationService;
 import org.zeta.views.BuilderView;
 import org.zeta.views.ClientView;
 import org.zeta.views.ProjectManagerView;

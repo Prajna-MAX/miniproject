@@ -1,4 +1,4 @@
-package org.zeta.service;
+package org.zeta.service.implementation;
 
 import org.zeta.dao.BaseDao;
 import org.zeta.dao.ProjectDao;

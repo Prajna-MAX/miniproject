@@ -1,11 +1,10 @@
 package org.zeta.views;
 
-import org.zeta.dao.BaseDao;
 import org.zeta.dao.ProjectDao;
 import org.zeta.dao.TaskDao;
 import org.zeta.dao.UserDao;
 import org.zeta.model.User;
-import org.zeta.service.ProjectManagerService;
+import org.zeta.service.implementation.ProjectManagerService;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
