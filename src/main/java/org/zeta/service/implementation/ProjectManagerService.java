@@ -1,4 +1,4 @@
-package org.zeta.service;
+package org.zeta.service.implementation;
 
 import org.zeta.dao.BaseDao;
 import org.zeta.dao.ProjectDao;
@@ -8,7 +8,6 @@ import org.zeta.model.Project;
 import org.zeta.model.Role;
 import org.zeta.model.Task;
 import org.zeta.model.User;
-import org.zeta.views.ProjectManagerView;
 
 import java.util.List;
 import java.util.Optional;

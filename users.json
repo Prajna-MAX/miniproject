@@ -33,4 +33,9 @@
   "username" : "rahul",
   "password" : "asdf",
   "role" : "BUILDER"
+}, {
+  "id" : "149e8e6a-41b6-495d-824a-6b80b18e73b8",
+  "username" : "aamir",
+  "password" : "1234",
+  "role" : "BUILDER"
 } ]
