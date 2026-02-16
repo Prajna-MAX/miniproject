@@ -1,8 +1,6 @@
 package org.zeta.dao;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.zeta.model.Project;
-
 import java.util.List;
 import java.util.Optional;
 

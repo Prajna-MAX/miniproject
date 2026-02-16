@@ -20,17 +20,10 @@
   "clientId" : "aac51457-0fca-41c2-8f10-94286808b9a3",
   "projectManagerId" : "f9b090c7-7ad5-4e71-9e38-ebfc89c311ec"
 }, {
-  "projectId" : "3e2a1b8b-a947-4d47-9799-528b817e0726",
-  "projectName" : "townhall",
+  "projectId" : "acda99e6-ecc4-4dfc-9297-8ba02503d259",
+  "projectName" : " ",
   "startDate" : null,
   "status" : "Submitted",
   "clientId" : "aac51457-0fca-41c2-8f10-94286808b9a3",
   "projectManagerId" : "f9b090c7-7ad5-4e71-9e38-ebfc89c311ec"
-}, {
-  "projectId" : "ad6d3fe3-1bf0-411c-b2d8-e918fd0d156b",
-  "projectName" : "random",
-  "startDate" : null,
-  "status" : "Submitted",
-  "clientId" : "aac51457-0fca-41c2-8f10-94286808b9a3",
-  "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
 } ]
