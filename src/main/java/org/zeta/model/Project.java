@@ -7,7 +7,9 @@ public class Project {
     private String projectId;
     private String projectName;
     private LocalDate startDate;
+    private int duration;
     private ProjectStatus status;
+    private String description ;
     private String clientId;
     private String projectManagerId;
 
@@ -27,12 +29,14 @@ public class Project {
                    String projectName,
                    LocalDate startDate,
                    ProjectStatus status,
+                   String description,
                    String clientId,
                    String projectManagerId) {
 
         this.projectId = projectId;
         this.projectName = projectName;
         this.startDate = startDate;
+        this.description = description;
         this.status = status;
         this.clientId = clientId;
         this.projectManagerId = projectManagerId;
@@ -87,5 +91,19 @@ public class Project {
         this.projectManagerId = projectManagerId;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 }

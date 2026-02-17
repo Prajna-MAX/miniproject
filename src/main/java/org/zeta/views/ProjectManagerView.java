@@ -12,11 +12,16 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class ProjectManagerView {
+
     static Scanner sc = new Scanner(System.in);
-    private static final Logger logger = Logger.getLogger(ProjectManagerView.class.getName());
-    static ProjectManagerService managerService = new ProjectManagerService();
+    private static final Logger logger =
+            Logger.getLogger(ProjectManagerView.class.getName());
+
+    static ProjectManagerService managerService =
+            new ProjectManagerService();
 
     public static void ProjectManagerDashboard(User projectManager) {
+
         ProjectDao projectDao = new ProjectDao();
         UserDao userDao = new UserDao();
         TaskDao taskDao = new TaskDao();
@@ -24,47 +29,65 @@ public class ProjectManagerView {
         System.out.println("Hi Project Manager: " + projectManager.getUsername());
 
         boolean running = true;
+
         while (running) {
+
             System.out.println("""
-                    \n===== Project Manager Dashboard =====
-                    1. View your projects
-                    2. Create tasks for a project
-                    3. Assign tasks to builders
-                    4. List clients
-                    5. View projects by client
-                    6. Logout
-                    Enter your choice:""");
+                    
+                    ===== Project Manager Dashboard =====
+                    1. View your upcoming projects
+                    2. Add project details (Start project)
+                    3. Create tasks for a project
+                    4. Assign tasks to builders
+                    5. List clients
+                    6. View projects by client
+                    7. Logout
+                    Enter your choice:
+                    """);
+
             try {
+
                 String input = sc.nextLine();
                 int choice = CommonValidator.validateInteger(input, "Menu choice");
 
                 switch (choice) {
+
                     case 1:
                         managerService.listProjects(projectDao, projectManager);
                         break;
+
                     case 2:
+                        managerService.addProjectDetails(projectDao, projectManager);
+                        break;
+
+                    case 3:
                         managerService.createTask(taskDao, projectDao, projectManager);
                         break;
-                    case 3:
+
+                    case 4:
                         managerService.assignTask(taskDao, userDao);
                         break;
-                    case 4:
+
+                    case 5:
                         managerService.listClients(userDao);
                         break;
-                    case 5:
+
+                    case 6:
                         managerService.viewProjectsByClient(userDao, projectDao);
                         break;
-                    case 6:
+
+                    case 7:
                         System.out.println("Logging out...");
                         running = false;
                         break;
+
                     default:
                         System.out.println("Invalid choice. Please try again.");
                 }
-            } catch (ValidationException ValidationException) {
-                System.out.println("Error: " + ValidationException.getMessage());
+
+            } catch (ValidationException e) {
+                System.out.println("Error: " + e.getMessage());
             }
         }
     }
 }
-
