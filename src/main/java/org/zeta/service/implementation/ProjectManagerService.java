@@ -43,12 +43,10 @@ public class ProjectManagerService {
         }
     }
 
-    public static void createTask(TaskDao taskDao,
+    public static void createTask(String projectId,TaskDao taskDao,
                                   ProjectDao projectDao,
                                   User manager) {
 
-        System.out.println("Enter Project ID to create task in:");
-        String projectId = sc.nextLine().trim();
 
         Optional<Project> projectOpt = projectDao.findById(projectId);
 
@@ -83,9 +81,7 @@ public class ProjectManagerService {
 
 
 
-    public static void assignTask(TaskDao taskDao, UserDao userDao) {
-        System.out.println("Enter Project ID to assign tasks:");
-        String projectId = sc.nextLine().trim();
+    public static void assignTask(String projectId,TaskDao taskDao, UserDao userDao) {
 
         List<Task> tasks = taskDao.findByProjectId(projectId);
         if (tasks.isEmpty()) {
@@ -134,10 +130,7 @@ public class ProjectManagerService {
         }
     }
 
-    public static void viewProjectsByClient(UserDao userDao, BaseDao<Project> projectDao) {
-        System.out.println("Enter Client Username:");
-        String username = sc.nextLine().trim();
-
+    public static void viewProjectsByClient(String username,UserDao userDao, BaseDao<Project> projectDao) {
         Optional<User> clientOpt = userDao.findIdbyName(username);
         if (!clientOpt.isPresent()) {
             System.out.println("No client found with username: " + username);
@@ -155,10 +148,7 @@ public class ProjectManagerService {
         }
 
     }
-    public static void addProjectDetails(ProjectDao projectDao, User manager) {
-
-        System.out.println("Enter Project ID to update:");
-        String projectId = sc.nextLine().trim();
+    public static void addProjectDetails(String projectId,String description,ProjectDao projectDao, User manager) {
 
         Optional<Project> projectOpt = projectDao.findById(projectId);
 
@@ -174,8 +164,7 @@ public class ProjectManagerService {
             return;
         }
 
-        System.out.println("Enter Project Description:");
-        String description = sc.nextLine().trim();
+
 
         System.out.println("Enter the duration for this project:");
         int durationInput = sc.nextInt();

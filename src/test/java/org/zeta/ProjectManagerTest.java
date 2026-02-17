@@ -71,7 +71,7 @@ public class ProjectManagerTest {
         when(userDao.findIdbyName("client1")).thenReturn(Optional.of(client));
         when(baseProjectDao.getAll()).thenReturn(List.of(project));
 
-        ProjectManagerService.viewProjectsByClient(userDao, baseProjectDao);
+        ProjectManagerService.viewProjectsByClient("client1",userDao, baseProjectDao);
 
     }
 

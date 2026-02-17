@@ -28,17 +28,18 @@ public class Main {
 
         while (true) {
 
-            System.out.println("Please choose:");
+            System.out.println("\nPlease choose:");
             System.out.println("1. Register");
             System.out.println("2. Login");
             System.out.println("3. Exit application");
+
             try {
                 String input = sc.nextLine();
                 int choice = CommonValidator.validateInteger(input, "Menu choice");
 
                 switch (choice) {
 
-                    case 1:
+                    case 1 -> { // Registration
                         System.out.println("Enter username:");
                         String regUsername = sc.nextLine();
 
@@ -48,21 +49,16 @@ public class Main {
                         System.out.println("Confirm password:");
                         String confirmPassword = sc.nextLine();
 
+                        // Role selection loop
                         Role selectedRole = null;
-
                         while (selectedRole == null) {
-
-                        Role selectedRole = null;
-
-                        while (selectedRole == null) {
-
                             System.out.println("""
-            Select Role:
-            1. Builder
-            2. Project Manager
-            3. Client
-            Enter your choice:
-            """);
+                                    Select Role:
+                                    1. Builder
+                                    2. Project Manager
+                                    3. Client
+                                    Enter your choice:
+                                    """);
 
                             if (!sc.hasNextInt()) {
                                 System.out.println("Invalid input. Please enter a number.");
@@ -74,63 +70,56 @@ public class Main {
                             sc.nextLine(); // consume newline
 
                             switch (roleChoice) {
-                                case 1:
-                                    selectedRole = Role.BUILDER;
-                                    break;
-                                case 2:
-                                    selectedRole = Role.PROJECT_MANAGER;
-                                    break;
-                                case 3:
-                                    selectedRole = Role.CLIENT;
-                                    break;
-                                default:
-                                    System.out.println("Please select a valid option (1-3).");
+                                case 1 -> selectedRole = Role.BUILDER;
+                                case 2 -> selectedRole = Role.PROJECT_MANAGER;
+                                case 3 -> selectedRole = Role.CLIENT;
+                                default -> System.out.println("Please select a valid option (1-3).");
                             }
                         }
 
+                        boolean registered = authService.register(regUsername, regPassword, confirmPassword, selectedRole);
+                        if (registered) {
+                            System.out.println("Registration successful!");
+                        } else {
+                            System.out.println("Registration failed. User may already exist or data is invalid.");
+                        }
+                    }
 
-                        authService.register(regUsername, regPassword, confirmPassword, selectedRole);
-                        break;
+                    case 2 -> { // Login
+                        System.out.println("Enter username:");
+                        String loginUsername = sc.nextLine();
 
-                    case 2:
+                        System.out.println("Enter password:");
+                        String loginPassword = sc.nextLine();
+
                         try {
-                            System.out.println("Enter username:");
-                            String loginUsername = sc.nextLine();
-
-                            System.out.println("Enter password:");
-                            String loginPassword = sc.nextLine();
                             User loggedInUser = authService.login(loginUsername, loginPassword);
+                            System.out.println("Welcome " + loggedInUser.getUsername());
 
-                            if (loggedInUser != null) {
-                                System.out.println("Welcome " + loggedInUser.getUsername());
-                                if (Objects.equals(loggedInUser.getRole(), Role.CLIENT)) {
-                                    ClientView.clientDashboard(loggedInUser);
-
-                                }
-                                if (Objects.equals(loggedInUser.getRole(), Role.BUILDER)) {
-                                    BuilderView.builderDashboard(loggedInUser);
-
-                                }
-                                if (Objects.equals(loggedInUser.getRole(), Role.PROJECT_MANAGER)) {
-                                    ProjectManagerView.ProjectManagerDashboard(loggedInUser);
-
-                                }
+                            // Role-based dashboards
+                            Role role = loggedInUser.getRole();
+                            if (role == Role.CLIENT) {
+                                ClientView.clientDashboard(loggedInUser);
+                            } else if (role == Role.BUILDER) {
+                                BuilderView.builderDashboard(loggedInUser);
+                            } else if (role == Role.PROJECT_MANAGER) {
+                                ProjectManagerView.ProjectManagerDashboard(loggedInUser);
                             }
-                        } catch (ValidationException validationException) {
-                            logger.severe("Error: " + validationException.getMessage());
+                        } catch (ValidationException e) {
+                            logger.severe("Login failed: " + e.getMessage());
                         }
-                        break;
+                    }
 
-                    case 3:
+                    case 3 -> { // Exit
                         System.out.println("Exiting application...");
                         System.exit(0);
-                        break;
+                    }
 
-                    default:
-                        System.out.println("Invalid choice");
-                }}
-catch (ValidationException ValidationException) {
-                System.out.println("Error: " + ValidationException.getMessage());
+                    default -> System.out.println("Invalid choice. Please enter 1, 2, or 3.");
+                }
+
+            } catch (ValidationException ve) {
+                System.out.println("Error: " + ve.getMessage());
             }
         }
     }

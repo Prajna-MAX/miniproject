@@ -57,15 +57,25 @@ public class ProjectManagerView {
                         break;
 
                     case 2:
-                        managerService.addProjectDetails(projectDao, projectManager);
+
+                        System.out.println("Enter Project ID to update:");
+                        String projectId = sc.nextLine().trim();
+                        System.out.println("Enter Project Description:");
+                        String description = sc.nextLine().trim();
+                        managerService.addProjectDetails(projectId,description,projectDao, projectManager);
                         break;
 
-                    case 3:
-                        managerService.createTask(taskDao, projectDao, projectManager);
+                    case 3:System.out.println("Enter Project ID to create task in:");
+                        String projectIdForTask = sc.nextLine().trim();
+
+                        managerService.createTask(projectIdForTask,taskDao, projectDao, projectManager);
                         break;
 
                     case 4:
-                        managerService.assignTask(taskDao, userDao);
+                        System.out.println("Enter Project ID to assign tasks:");
+                        String projectid = sc.nextLine().trim();
+
+                        managerService.assignTask(projectid,taskDao, userDao);
                         break;
 
                     case 5:
@@ -73,7 +83,9 @@ public class ProjectManagerView {
                         break;
 
                     case 6:
-                        managerService.viewProjectsByClient(userDao, projectDao);
+                        System.out.println("Enter Client Username:");
+                        String username = sc.nextLine().trim();
+                        managerService.viewProjectsByClient(username,userDao, projectDao);
                         break;
 
                     case 7:

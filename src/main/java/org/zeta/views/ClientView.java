@@ -24,8 +24,6 @@ public class ClientView {
         UserDao userDao = new UserDao();
         IClientService clientService = new ClientService(projectDao, userDao);
 
-        boolean running = true;
-
         while (running) {
             System.out.println("""
                     1. Submit a project
@@ -45,12 +43,6 @@ public class ClientView {
                 String input = sc.nextLine();
                 int clientChoice = CommonValidator.validateInteger(input, "Menu choice");
 
-                switch (clientChoice) {
-                    case 1 -> {
-                        System.out.println("Submitting a project...");
-                        // You can implement project submission here
-                        System.out.println("Feature coming soon!");
-                    }
 
                 switch (clientChoice) {
 
