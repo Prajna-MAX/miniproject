@@ -12,13 +12,12 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class BuilderService {
-    static Scanner sc=new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
     static TaskDao taskDao = new TaskDao();
     static ProjectDao projectDao = new ProjectDao();
     static List<Task> tasks = taskDao.getAll();
-    public static void listOfTasks(User Builder){
 
-
+    public static void listOfTasks(User Builder) {
         List<Project> projects = projectDao.getAll();
         tasks.stream()
                 .filter(t -> Objects.equals(t.getBuilderId(), Builder.getId()))
@@ -28,24 +27,22 @@ public class BuilderService {
                             .findFirst()
                             .orElse(null);
 
-                    String projectName = project.getProjectName() ;
+                    String projectName = project.getProjectName();
 
                     System.out.println(projectName + " - " + t.getTaskName());
                 });
     }
 
-    public static void updateStatus(User Builder){
-        System.out.println("Enter Task");
-String taskName=sc.nextLine();
-tasks.stream()
-        .filter(t -> Objects.equals(t.getBuilderId(), Builder.getId()))
-        .forEach(t->{
-            if(t.getTaskName().equals(taskName)){
-                t.setStatus(TaskStatus.COMPLETED);
-            }
-            taskDao.saveTask(t);
+    public static void updateStatus(String taskName, User Builder) {
+        tasks.stream()
+                .filter(t -> Objects.equals(t.getBuilderId(), Builder.getId()))
+                .forEach(t -> {
+                    if (t.getTaskName().equals(taskName)) {
+                        t.setStatus(TaskStatus.COMPLETED);
+                    }
+                    taskDao.saveTask(t);
 
-        });
+                });
 
 
     }
