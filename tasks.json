@@ -35,9 +35,15 @@
   "builderId" : "847df785-01e1-4bb2-8d28-b061e1e64256",
   "status" : "NOT_STARTED"
 }, {
-  "id" : "e99c1dc7-6b68-430e-b874-7bc107c2f69c",
+  "id" : "16dd22cb-e5ee-45eb-a2d6-7248ec5814c0",
+  "projectId" : "bb0cc1bc-a102-4473-9da0-76484e1fa9f7",
+  "taskName" : "Foundation",
+  "builderId" : "847df785-01e1-4bb2-8d28-b061e1e64256",
+  "status" : "COMPLETED"
+}, {
+  "id" : "72d325ac-3e08-4f2a-826e-c378680ab420",
   "projectId" : "7749b0ba-33e7-46aa-b604-cb1f1b5bf124",
-  "taskName" : "21",
-  "builderId" : null,
+  "taskName" : "Floor Tiling",
+  "builderId" : "847df785-01e1-4bb2-8d28-b061e1e64256",
   "status" : "NOT_STARTED"
 } ]

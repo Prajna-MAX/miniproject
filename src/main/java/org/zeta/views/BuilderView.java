@@ -42,9 +42,16 @@ boolean running=true;
                         BuilderService.listOfTasks(builder);
                         break;
                     case 2:
-                        BuilderService.updateStatus(builder);
+                        System.out.println("Enter Task");
+                        String taskName=sc.nextLine();
+                        BuilderService.updateStatus(taskName,builder);
 
+                    case 3:System.out.println("Logging out...");
+                        running = false;
+                        break;
 
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
                 }
             } catch (ValidationException ValidationException) {
                 System.out.println("Error: " + ValidationException.getMessage());
