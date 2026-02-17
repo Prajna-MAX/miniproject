@@ -68,4 +68,94 @@
   "username" : "pm1",
   "password" : "pass123",
   "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "0c991dee-dcfa-4c81-8b48-395fc9674542",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "1033aacc-ec51-4866-81c5-d388ca06850e",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "a75a3dc9-2a53-4eea-bc83-2c3f2ba269c0",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "fc91aedc-03cd-4db9-bfc4-e3dafce34cce",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "d0eb3130-290d-4000-815a-bed770d598fb",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "eab81011-c93e-4eea-b9fe-2e44112ab080",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "9fc8838e-d213-4e92-8387-891a4adeab99",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "601896f8-b307-4b7e-9c4b-341bfc2b5c95",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "5776017a-2ee3-4059-8abc-09b69ce36819",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "0ae8cdda-8984-459b-9259-9a0058fa43a2",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "61988c04-49bf-43af-9fea-a103268ec424",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "157d6986-42aa-4160-baf6-e42014dd4eb3",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "b4f7f7c9-49e7-4f34-9351-9748827e08f5",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "d07995a0-9a0e-4646-9ba7-7579a1d38935",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "8343e109-f00f-4b06-ab12-996478a863bf",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "f4749077-03ba-409a-a1c4-504fa2614d7a",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "c7ea7d8d-6fa9-4688-af41-089aae7a0a99",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "5567c5ae-4cf1-4259-ab21-52bdcf99e0b3",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
 } ]

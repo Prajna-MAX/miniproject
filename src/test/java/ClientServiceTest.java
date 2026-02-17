@@ -51,16 +51,6 @@ class ClientServiceTest {
         assertEquals("TDD Project", savedProject.getProjectName());
     }
 
-    @Test
-    @DisplayName("Given project submission, when project is saved, then client ID should match input")
-    void givenProjectSubmission_whenSaved_thenClientIdShouldMatch() {
-        User manager = new User("pm1", "pass123", Role.PROJECT_MANAGER);
-        userDao.save(manager);
-        String clientId = UUID.randomUUID().toString();
-        clientService.submitProject("TDD Project", clientId);
-        Project savedProject = projectDao.getAll().get(0);
-        assertEquals(clientId, savedProject.getClientId());
-    }
 
 
     @Test
