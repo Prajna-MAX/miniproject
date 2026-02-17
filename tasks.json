@@ -9,7 +9,7 @@
   "projectId" : "bb0cc1bc-a102-4473-9da0-76484e1fa9f7",
   "taskName" : "Foundation",
   "builderId" : "847df785-01e1-4bb2-8d28-b061e1e64256",
-  "status" : "NOT_STARTED"
+  "status" : "COMPLETED"
 }, {
   "id" : "aa719788-c234-4a66-921c-4d9abc6034c6",
   "projectId" : "7749b0ba-33e7-46aa-b604-cb1f1b5bf124",
@@ -28,6 +28,18 @@
   "taskName" : "Plumbing",
   "builderId" : null,
   "status" : "NOT_STARTED"
+}, {
+  "id" : "72d325ac-3e08-4f2a-826e-c378680ab420",
+  "projectId" : "7749b0ba-33e7-46aa-b604-cb1f1b5bf124",
+  "taskName" : "Floor Tiling",
+  "builderId" : "847df785-01e1-4bb2-8d28-b061e1e64256",
+  "status" : "NOT_STARTED"
+}, {
+  "id" : "16dd22cb-e5ee-45eb-a2d6-7248ec5814c0",
+  "projectId" : "bb0cc1bc-a102-4473-9da0-76484e1fa9f7",
+  "taskName" : "Foundation",
+  "builderId" : "847df785-01e1-4bb2-8d28-b061e1e64256",
+  "status" : "COMPLETED"
 }, {
   "id" : "72d325ac-3e08-4f2a-826e-c378680ab420",
   "projectId" : "7749b0ba-33e7-46aa-b604-cb1f1b5bf124",

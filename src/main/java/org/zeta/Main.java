@@ -39,19 +39,33 @@ public class Main {
                 switch (choice) {
 
                     case 1:
-                        System.out.println("Enter username:");
-                        String regUsername = sc.nextLine();
+                        try {
+                            System.out.println("Enter username:");
+                            String regUsername = sc.nextLine();
 
-                        System.out.println("Enter password:");
-                        String regPassword = sc.nextLine();
+                            System.out.println("Enter password:");
+                            String regPassword = sc.nextLine();
 
-                        System.out.println("Confirm password:");
-                        String confirmPassword = sc.nextLine();
+                            System.out.println("Confirm password:");
+                            String confirmPassword = sc.nextLine();
 
-                        System.out.println("Enter role (BUILDER / PROJECT MANAGER/ CLIENT):");
-                        String role = sc.nextLine();
+                            System.out.println("Enter role (BUILDER / PROJECT_MANAGER / CLIENT):");
+                            String role = sc.nextLine().toUpperCase();
 
-                        authService.register(regUsername, regPassword, confirmPassword, Role.valueOf(role));
+                            authService.register(
+                                    regUsername,
+                                    regPassword,
+                                    confirmPassword,
+                                    Role.valueOf(role)
+                            );
+
+                            System.out.println("Registration successful!");
+
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Invalid role entered.");
+                        } catch (ValidationException e) {
+                            logger.severe("Error: " + e.getMessage());
+                        }
                         break;
 
                     case 2:
@@ -61,25 +75,27 @@ public class Main {
 
                             System.out.println("Enter password:");
                             String loginPassword = sc.nextLine();
+
                             User loggedInUser = authService.login(loginUsername, loginPassword);
 
                             if (loggedInUser != null) {
                                 System.out.println("Welcome " + loggedInUser.getUsername());
-                                if (Objects.equals(loggedInUser.getRole(), Role.CLIENT)) {
-                                    ClientView.clientDashboard(loggedInUser);
 
-                                }
-                                if (Objects.equals(loggedInUser.getRole(), Role.BUILDER)) {
-                                    BuilderView.builderDashboard(loggedInUser);
-
-                                }
-                                if (Objects.equals(loggedInUser.getRole(), Role.PROJECT_MANAGER)) {
-                                    ProjectManagerView.ProjectManagerDashboard(loggedInUser);
-
+                                switch (loggedInUser.getRole()) {
+                                    case CLIENT:
+                                        ClientView.clientDashboard(loggedInUser);
+                                        break;
+                                    case BUILDER:
+                                        BuilderView.builderDashboard(loggedInUser);
+                                        break;
+                                    case PROJECT_MANAGER:
+                                        ProjectManagerView.ProjectManagerDashboard(loggedInUser);
+                                        break;
                                 }
                             }
-                        } catch (ValidationException validationException) {
-                            logger.severe("Error: " + validationException.getMessage());
+
+                        } catch (ValidationException e) {
+                            logger.severe("Error: " + e.getMessage());
                         }
                         break;
 
@@ -90,8 +106,8 @@ public class Main {
 
                     default:
                         System.out.println("Invalid choice");
-                }
-            } catch (ValidationException ValidationException) {
+                }}
+catch (ValidationException ValidationException) {
                 System.out.println("Error: " + ValidationException.getMessage());
             }
         }

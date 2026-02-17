@@ -29,22 +29,22 @@ public class ClientView {
                 String input = sc.nextLine();
 
                 int clientChoice = CommonValidator.validateInteger(input, "Menu choice");
+                switch (clientChoice) {
 
+                    case 1:
+                        List<Project> projects =
+                                clientService.getClientProjects(client.getId());
 
-                case 2:
-                    List<Project> projects =
-                            clientService.getClientProjects(client.getId());
-
-                    if (projects.isEmpty()) {
-                        System.out.println("No projects found.");
-                    } else {
-                        System.out.println("<-------Here are your Projects " +  );
-                        for (Project p : projects) {
-                            System.out.println(
-                                    p.getProjectId() + " - " + p.getProjectName()
-                            );
+                        if (projects.isEmpty()) {
+                            System.out.println("No projects found.");
+                        } else {
+                            System.out.println("<-------Here are your Projects--------> " );
+                            for (Project p : projects) {
+                                System.out.println(
+                                        p.getProjectId() + " - " + p.getProjectName()
+                                );
+                            }
                         }
-                    }
 
 
                     case 2:
@@ -63,4 +63,5 @@ public class ClientView {
             }
         }
     }
+
 }

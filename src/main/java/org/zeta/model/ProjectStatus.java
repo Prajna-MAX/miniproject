@@ -1,7 +1,7 @@
 package org.zeta.model;
 
 public enum ProjectStatus {
-    Submitted,
+Submitted,
     Upcoming,
     InProgress,
     Completed

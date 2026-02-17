@@ -19,7 +19,7 @@ public class Project {
         this.projectId = UUID.randomUUID().toString();
         this.projectName = projectName;
         this.clientId = clientId;
-        this.status=ProjectStatus.Submitted;
+        this.status=ProjectStatus.Upcoming;
     }
 
 
