@@ -1,4 +1,5 @@
 package org.zeta.service.implementation;
+import org.zeta.model.ProjectStatus;
 
 import org.zeta.dao.BaseDao;
 import org.zeta.dao.ProjectDao;
@@ -9,6 +10,7 @@ import org.zeta.model.Role;
 import org.zeta.model.Task;
 import org.zeta.model.User;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -20,32 +22,65 @@ public class ProjectManagerService {
 
 
     public static void listProjects(BaseDao<Project> projectDao, User manager) {
+
         List<Project> projects = projectDao.getAll();
-        System.out.println("\n--- Your Projects ---");
+
+        System.out.println("\n--- Here are the new projects ---");
+
+        boolean found = false;
+
         for (Project p : projects) {
-            if (p.getProjectManagerId().equals(manager.getId())) {
+            if (p.getProjectManagerId().equals(manager.getId())
+                    && p.getStatus() == ProjectStatus.Upcoming) {
+
                 System.out.println(p.getProjectId() + " - " + p.getProjectName());
+                found = true;
             }
         }
+
+        if (!found) {
+            System.out.println("No upcoming projects found.");
+        }
     }
-    public static void createTask(TaskDao taskDao, ProjectDao projectDao, User manager) {
+
+    public static void createTask(TaskDao taskDao,
+                                  ProjectDao projectDao,
+                                  User manager) {
 
         System.out.println("Enter Project ID to create task in:");
         String projectId = sc.nextLine().trim();
 
         Optional<Project> projectOpt = projectDao.findById(projectId);
+
         if (projectOpt.isEmpty()) {
             System.out.println("Project not found. Make sure to enter the correct ID!");
+            return;
+        }
+
+        Project project = projectOpt.get();
+
+        // 🔒 Ensure manager owns the project
+        if (!project.getProjectManagerId().equals(manager.getId())) {
+            System.out.println("You are not authorized to create tasks for this project.");
+            return;
+        }
+
+        // 🔥 NEW BUSINESS RULE
+        if (project.getStatus() != ProjectStatus.InProgress) {
+            System.out.println("This project is not available to add task.");
             return;
         }
 
         System.out.println("Enter Task Name:");
         String taskName = sc.nextLine().trim();
 
-        Task newTask = new Task(projectId,taskName);
+        Task newTask = new Task(projectId, taskName);
+
         taskDao.add(newTask);
+
         System.out.println("Task created successfully with ID: " + newTask.getId());
     }
+
 
 
     public static void assignTask(TaskDao taskDao, UserDao userDao) {
@@ -118,5 +153,46 @@ public class ProjectManagerService {
                 System.out.println(p.getProjectId() + " - " + p.getProjectName());
             }
         }
+
     }
+    public static void addProjectDetails(ProjectDao projectDao, User manager) {
+
+        System.out.println("Enter Project ID to update:");
+        String projectId = sc.nextLine().trim();
+
+        Optional<Project> projectOpt = projectDao.findById(projectId);
+
+        if (projectOpt.isEmpty()) {
+            System.out.println("Project not found.");
+            return;
+        }
+
+        Project project = projectOpt.get();
+
+        if (!project.getProjectManagerId().equals(manager.getId())) {
+            System.out.println("You are not authorized to modify this project.");
+            return;
+        }
+
+        System.out.println("Enter Project Description:");
+        String description = sc.nextLine().trim();
+
+        System.out.println("Enter the duration for this project:");
+        int durationInput = sc.nextInt();
+
+        try {
+
+            project.setDescription(description);
+            project.setDuration(durationInput);
+            project.setStatus(ProjectStatus.InProgress);
+
+            projectDao.update(project);
+
+            System.out.println("Project updated successfully. Status set to IN_PROGRESS.");
+
+        } catch (Exception e) {
+            System.out.println("Invalid date format. Please use yyyy-MM-dd.");
+        }
+    }
+
 }
