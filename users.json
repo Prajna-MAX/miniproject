@@ -48,4 +48,24 @@
   "username" : "jon",
   "password" : "asdfgh12",
   "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "1295f335-3632-47a6-a494-08e5289607b1",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "a04ee21c-45a4-44d1-8acc-402797d60202",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "78005f0d-53e4-4c7a-892e-458593d98d01",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
+}, {
+  "id" : "acbb1069-a1e0-4b46-9214-dc02dc7e7774",
+  "username" : "pm1",
+  "password" : "pass123",
+  "role" : "PROJECT_MANAGER"
 } ]
