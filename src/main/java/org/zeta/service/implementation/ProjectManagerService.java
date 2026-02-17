@@ -149,22 +149,16 @@ public class ProjectManagerService {
 
     }
     public static void addProjectDetails(String projectId,String description,ProjectDao projectDao, User manager) {
-
         Optional<Project> projectOpt = projectDao.findById(projectId);
-
         if (projectOpt.isEmpty()) {
             System.out.println("Project not found.");
             return;
         }
-
         Project project = projectOpt.get();
-
         if (!project.getProjectManagerId().equals(manager.getId())) {
             System.out.println("You are not authorized to modify this project.");
             return;
         }
-
-
 
         System.out.println("Enter the duration for this project:");
         int durationInput = sc.nextInt();

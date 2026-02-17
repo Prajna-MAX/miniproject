@@ -32,10 +32,8 @@ public class ProjectManagerTest {
         taskDao = mock(TaskDao.class);
         userDao = mock(UserDao.class);
         baseProjectDao = mock(BaseDao.class);
-
         manager = new User("manager1", "pass", Role.PROJECT_MANAGER);
         manager.setId("m1");
-
         project = new Project("p1", "Project One");
         project.setProjectManagerId(manager.getId());
         project.setStatus(ProjectStatus.InProgress);
@@ -47,9 +45,7 @@ public class ProjectManagerTest {
         Project p2 = new Project("p2", "c1");
         p2.setProjectManagerId(manager.getId());
         p2.setStatus(ProjectStatus.Upcoming);
-
         when(baseProjectDao.getAll()).thenReturn(List.of(project, p2));
-
         ProjectManagerService.listProjects(baseProjectDao, manager);
 
     }
@@ -58,7 +54,6 @@ public class ProjectManagerTest {
     @Test
     void listClients_shouldCallFindByRole() {
         ProjectManagerService.listClients(userDao);
-
         verify(userDao).findByRole(Role.CLIENT);
     }
 
@@ -66,14 +61,42 @@ public class ProjectManagerTest {
     void viewProjectsByClient_shouldPrintClientProjects() {
         User client = new User("client1", "pass", Role.CLIENT);
         client.setId("c1");
-
-
         when(userDao.findIdbyName("client1")).thenReturn(Optional.of(client));
         when(baseProjectDao.getAll()).thenReturn(List.of(project));
 
         ProjectManagerService.viewProjectsByClient("client1",userDao, baseProjectDao);
 
     }
+    @Test
+    void invalidClient_shouldReturnWhenClientNotFound() {
+
+        when(userDao.findIdbyName("client1")).thenReturn(Optional.empty());
+
+        ProjectManagerService.viewProjectsByClient(
+                "client1",
+                userDao,
+                baseProjectDao
+        );
+
+        verify(userDao).findIdbyName("client1");
+    }
+
+
+@Test
+void addProjectDetails_whenProjectNotFound() {
+
+    when(projectDao.findById("p1")).thenReturn(Optional.empty());
+
+    ProjectManagerService.addProjectDetails(
+            "p1",
+            "New Desc",
+            projectDao,
+            manager
+    );
+
+    verify(projectDao, never()).update(any());
+}
+
 
 
 }
