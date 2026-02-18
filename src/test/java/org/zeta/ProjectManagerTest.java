@@ -2,7 +2,6 @@ package org.zeta;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.zeta.dao.BaseDao;
 import org.zeta.dao.ProjectDao;
 import org.zeta.dao.TaskDao;
@@ -45,7 +44,6 @@ public class ProjectManagerTest {
         ProjectManagerService.listProjects(baseProjectDao, manager);
         verify(baseProjectDao).getAll();
     }
-
 
     @Test
     void listClients_shouldCallFindByRole() {
@@ -105,15 +103,11 @@ public class ProjectManagerTest {
         Task task = new Task();
         task.setId("t1");
         task.setTaskName("Task 1");
-
         User builder = new User("builder1", "pass", Role.BUILDER);
         builder.setId("b1");
-
         when(taskDao.findByProjectId("p1")).thenReturn(List.of(task));
         when(userDao.findByRole(Role.BUILDER)).thenReturn(List.of(builder));
-
         ProjectManagerService.assignTask("p1", "t1", "b1", taskDao, userDao);
-
         verify(taskDao, times(1)).assignBuilder("t1", "b1");
     }
     @Test
@@ -122,13 +116,38 @@ public class ProjectManagerTest {
         ProjectManagerService.listClients(userDao);
         verify(userDao, times(1)).findByRole(Role.CLIENT);
     }
+    @Test
+    void testClientList() {
+        User client = new User("builder1", "pass", Role.CLIENT);
+        when(userDao.findByRole(Role.CLIENT)).thenReturn(List.of(client));
+        ProjectManagerService.listClients(userDao);
+        verify(userDao, times(1)).findByRole(Role.CLIENT);
+    }
 
     @Test
-    void createTask_projectNotFound(){
+    void testcreateTask_projectNotFound(){
         when(projectDao.findById("p1")).thenReturn(Optional.empty());
-        ProjectManagerService.createTask("p1",taskDao,projectDao,manager);
+        ProjectManagerService.createTask("p1","T1",taskDao,projectDao,manager);
         verify(taskDao, never()).add(any());
         verify(projectDao, times(1)).findById("p1");
     }
+    @Test
+    void testCreateTask_invalidManager() {
+        Project project = new Project();
+        project.setProjectId("p1");
+        project.setProjectManagerId("MANAGER2");
+        when(projectDao.findById("p1")).thenReturn(Optional.of(project));
+        manager.setId("manager1");
+        ProjectManagerService.createTask("p1", "T1", taskDao, projectDao, manager);
+        verify(taskDao, never()).add(any());
+    }
+
+@Test
+    void testAddTask(){
+    when(projectDao.findById("p1")).thenReturn(Optional.of(project));
+    ProjectManagerService.createTask("p1","T1",taskDao,projectDao,manager);
+    verify(projectDao, times(1)).findById("p1");
+}
+
 
 }

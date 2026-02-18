@@ -21,58 +21,44 @@ public class ProjectManagerService {
     private static final Logger logger = Logger.getLogger(ProjectManagerService.class.getName());
 
 
+static void checkValidManager(Project project, User manager) {
+    if (!project.getProjectManagerId().equals(manager.getId())) {
+        System.out.println("You are not authorized to modify this project.");
+        return;
+    }
+}
     public static void listProjects(BaseDao<Project> projectDao, User manager) {
-
         List<Project> projects = projectDao.getAll();
-
         System.out.println("\n--- Here are the new projects ---");
-
         boolean found = false;
-
         for (Project p : projects) {
             if (p.getProjectManagerId().equals(manager.getId())
                     && p.getStatus() == ProjectStatus.Upcoming) {
-
                 System.out.println(p.getProjectId() + " - " + p.getProjectName());
                 found = true;
             }
         }
-
         if (!found) {
             System.out.println("No upcoming projects found.");
         }
     }
 
-    public static void createTask(String projectId,TaskDao taskDao,
+    public static void createTask(String projectId,String taskName,TaskDao taskDao,
                                   ProjectDao projectDao,
                                   User manager) {
-
-
         Optional<Project> projectOpt = projectDao.findById(projectId);
-
         if (projectOpt.isEmpty()) {
             System.out.println("Project not found. Make sure to enter the correct ID!");
             return;
         }
-
         Project project = projectOpt.get();
-        if (!project.getProjectManagerId().equals(manager.getId())) {
-            System.out.println("You are not authorized to create tasks for this project.");
-            return;
-        }
-
+        checkValidManager(project,manager);
         if (project.getStatus() != ProjectStatus.InProgress) {
             System.out.println("This project is not available to add task.");
             return;
         }
-
-        System.out.println("Enter Task Name:");
-        String taskName = sc.nextLine().trim();
-
         Task newTask = new Task(projectId, taskName);
-
         taskDao.add(newTask);
-
         System.out.println("Task created successfully with ID: " + newTask.getId());
     }
 
@@ -144,10 +130,8 @@ public class ProjectManagerService {
             return;
         }
         Project project = projectOpt.get();
-        if (!project.getProjectManagerId().equals(manager.getId())) {
-            System.out.println("You are not authorized to modify this project.");
-            return;
-        }
+        checkValidManager(project,manager);
+
         try {
             project.setDescription(description);
             project.setDuration(durationInput);
