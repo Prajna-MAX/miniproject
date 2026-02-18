@@ -48,8 +48,6 @@ public class Main {
 
                         System.out.println("Confirm password:");
                         String confirmPassword = sc.nextLine();
-
-                        // Role selection loop
                         Role selectedRole = null;
                         while (selectedRole == null) {
                             System.out.println("""
@@ -62,12 +60,11 @@ public class Main {
 
                             if (!sc.hasNextInt()) {
                                 System.out.println("Invalid input. Please enter a number.");
-                                sc.nextLine(); // clear invalid input
+                                sc.nextLine();
                                 continue;
                             }
-
                             int roleChoice = sc.nextInt();
-                            sc.nextLine(); // consume newline
+                            sc.nextLine();
 
                             switch (roleChoice) {
                                 case 1 -> selectedRole = Role.BUILDER;
@@ -85,7 +82,7 @@ public class Main {
                         }
                     }
 
-                    case 2 -> { // Login
+                    case 2 -> {
                         System.out.println("Enter username:");
                         String loginUsername = sc.nextLine();
 
@@ -110,7 +107,7 @@ public class Main {
                         }
                     }
 
-                    case 3 -> { // Exit
+                    case 3 -> {
                         System.out.println("Exiting application...");
                         System.exit(0);
                     }

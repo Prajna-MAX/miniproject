@@ -15,10 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class BuilderView {
     static BuilderService builderService = new BuilderService();
-
+static Logger logger=Logger.getLogger("BuilderView");
     public static void builderDashboard(User builder) {
 
         UserDao userDao = new UserDao();
@@ -35,6 +36,7 @@ boolean running=true;
                     Enter your choice:""");
             try {
                 int builderChoice = sc.nextInt();
+                sc.nextLine();
                 switch (builderChoice) {
                     case 1:
                         System.out.println("\n--- Your Tasks ---");
@@ -45,6 +47,8 @@ boolean running=true;
                         System.out.println("Enter Task");
                         String taskName=sc.nextLine();
                         BuilderService.updateStatus(taskName,builder);
+                        logger.info("Status updated");
+                        break;
 
                     case 3:System.out.println("Logging out...");
                         running = false;

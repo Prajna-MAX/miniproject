@@ -62,7 +62,6 @@ public class ProjectManagerView {
                         String projectId = sc.nextLine().trim();
                         System.out.println("Enter Project Description:");
                         String description = sc.nextLine().trim();
-
                         System.out.println("Enter the duration for this project:");
                         int durationInput = sc.nextInt();
                         managerService.addProjectDetails(projectId,description,durationInput,projectDao, projectManager);

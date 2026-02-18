@@ -47,7 +47,7 @@ public class AuthServiceTest {
         when(userDao.findByUsername("john")).thenReturn(Optional.of(user));
 
         boolean result = authenticationService.register(
-                "john", "1234", "1234", Role.CLIENT
+                "john", "123456", "123456", Role.CLIENT
         );
 
         assertFalse(result);

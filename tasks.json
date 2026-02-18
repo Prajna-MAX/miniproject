@@ -52,4 +52,16 @@
   "taskName" : "plaster",
   "builderId" : null,
   "status" : "NOT_STARTED"
+}, {
+  "id" : "1b80194f-e95f-4796-a93b-228bd6392c4a",
+  "projectId" : "6bf6030a-b7ea-4b10-b071-6f445b5c0ae8",
+  "taskName" : "Foundation",
+  "builderId" : "149e8e6a-41b6-495d-824a-6b80b18e73b8",
+  "status" : "NOT_STARTED"
+}, {
+  "id" : "5783f9bc-51ab-4d8b-b1cf-999c26045e27",
+  "projectId" : "4b5820db-167f-4a86-92cd-df013cdb4593",
+  "taskName" : "Plumbing",
+  "builderId" : null,
+  "status" : "NOT_STARTED"
 } ]
