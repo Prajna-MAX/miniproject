@@ -2,7 +2,7 @@ package org.zeta.dao;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.zeta.model.Task;
-import org.zeta.model.TaskStatus;
+import org.zeta.model.enums.TaskStatus;
 
 import java.util.List;
 import java.util.Optional;

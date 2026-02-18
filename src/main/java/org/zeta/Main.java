@@ -1,7 +1,7 @@
 package org.zeta;
 
 import org.zeta.dao.UserDao;
-import org.zeta.model.Role;
+import org.zeta.model.enums.Role;
 import org.zeta.model.User;
 import org.zeta.service.implementation.AuthenticationService;
 import org.zeta.validation.CommonValidator;
@@ -18,7 +18,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in); // ONE scanner for entire app
+        Scanner scanner = new Scanner(System.in);
         Logger logger = Logger.getLogger("main");
 
         UserDao userDAO = new UserDao();
@@ -33,36 +33,31 @@ public class Main {
 
             try {
 
-                String input = sc.nextLine();
+                String input = scanner.nextLine();
                 int choice = CommonValidator.validateInteger(input, "Menu choice");
 
                 switch (choice) {
 
                     case 1 -> {
                         System.out.println("Enter username:");
-                        String regUsername = sc.nextLine();
+                        String regUsername = scanner.nextLine();
 
                         Console console = System.console();
                         String regPassword;
                         String confirmPassword;
 
-<<<<<<< HEAD
                         if (console != null) {
                             regPassword = new String(console.readPassword("Enter password: "));
                             confirmPassword = new String(console.readPassword("Confirm password: "));
                         } else {
                             // IntelliJ fallback
                             System.out.println("Enter password:");
-                            regPassword = sc.nextLine();
+                            regPassword = scanner.nextLine();
 
                             System.out.println("Confirm password:");
-                            confirmPassword = sc.nextLine();
+                            confirmPassword = scanner.nextLine();
                         }
 
-=======
-                        System.out.println("Confirm password:");
-                        String confirmPassword = sc.nextLine();
->>>>>>> 68e3ba8a767a6995a7fde6130a30d9a81712f387
                         Role selectedRole = null;
                         while (selectedRole == null) {
                             System.out.println("""
@@ -73,19 +68,9 @@ public class Main {
                                     Enter your choice:
                                     """);
 
-<<<<<<< HEAD
-                            String roleInput = sc.nextLine();
+                            String roleInput = scanner.nextLine();
                             int roleChoice =
                                     CommonValidator.validateInteger(roleInput, "Role choice");
-=======
-                            if (!sc.hasNextInt()) {
-                                System.out.println("Invalid input. Please enter a number.");
-                                sc.nextLine();
-                                continue;
-                            }
-                            int roleChoice = sc.nextInt();
-                            sc.nextLine();
->>>>>>> 68e3ba8a767a6995a7fde6130a30d9a81712f387
 
                             switch (roleChoice) {
                                 case 1 -> selectedRole = Role.BUILDER;
@@ -108,7 +93,7 @@ public class Main {
 
                     case 2 -> {
                         System.out.println("Enter username:");
-                        String loginUsername = sc.nextLine();
+                        String loginUsername = scanner.nextLine();
 
                         Console console = System.console();
                         String loginPassword;
@@ -116,9 +101,8 @@ public class Main {
                         if (console != null) {
                             loginPassword = new String(console.readPassword("Enter password: "));
                         } else {
-                            // IntelliJ fallback
                             System.out.println("Enter password:");
-                            loginPassword = sc.nextLine();
+                            loginPassword = scanner.nextLine();
                         }
 
                         try {
@@ -128,11 +112,11 @@ public class Main {
                             Role role = loggedInUser.getRole();
 
                             if (role == Role.CLIENT) {
-                                ClientView.clientDashboard(loggedInUser, sc);
+                                ClientView.clientDashboard(loggedInUser, scanner);
                             } else if (role == Role.BUILDER) {
-                                BuilderView.builderDashboard(loggedInUser, sc);
+                                BuilderView.builderDashboard(loggedInUser, scanner);
                             } else if (role == Role.PROJECT_MANAGER) {
-                                ProjectManagerView.ProjectManagerDashboard(loggedInUser, sc);
+                                ProjectManagerView.ProjectManagerDashboard(loggedInUser, scanner);
                             }
 
                         } catch (ValidationException e) {
@@ -142,7 +126,7 @@ public class Main {
 
                     case 3 -> {
                         System.out.println("Exiting application...");
-                        sc.close();
+                        scanner.close();
                         System.exit(0);
                     }
 

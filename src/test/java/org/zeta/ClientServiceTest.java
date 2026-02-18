@@ -6,14 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.zeta.dao.ProjectDao;
 import org.zeta.dao.UserDao;
 import org.zeta.model.Project;
-import org.zeta.model.Role;
+import org.zeta.model.enums.Role;
 import org.zeta.model.User;
 import org.zeta.service.implementation.ClientService;
-
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ClientServiceTest {

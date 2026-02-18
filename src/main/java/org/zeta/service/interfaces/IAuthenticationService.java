@@ -1,6 +1,6 @@
 package org.zeta.service.interfaces;
 
-import org.zeta.model.Role;
+import org.zeta.model.enums.Role;
 import org.zeta.model.User;
 
 public interface IAuthenticationService {

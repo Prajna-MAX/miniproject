@@ -1,8 +1,7 @@
 [ {
-<<<<<<< HEAD
+
   "projectId" : "bb0cc1bc-a102-4473-9da0-76484e1fa9f7",
   "projectName" : "Godrej",
-=======
   "projectId" : "4b5820db-167f-4a86-92cd-df013cdb4593",
   "projectName" : "Satva",
   "startDate" : null,
@@ -14,7 +13,6 @@
 }, {
   "projectId" : "bcfd8bb5-9d05-42ce-aa7c-0cddcc861ee4",
   "projectName" : "Satva",
->>>>>>> 68e3ba8a767a6995a7fde6130a30d9a81712f387
   "startDate" : null,
   "duration" : 0,
   "status" : "Upcoming",
@@ -36,7 +34,6 @@
   "startDate" : null,
   "duration" : 60,
   "status" : "InProgress",
-<<<<<<< HEAD
   "description" : "A Bangalore based project, for accomodating office spaces to be build around 2.5 acres land",
   "clientId" : "aac51457-0fca-41c2-8f10-94286808b9a3",
   "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
@@ -49,9 +46,5 @@
   "description" : "this is a small project",
   "clientId" : "aac51457-0fca-41c2-8f10-94286808b9a3",
   "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
-=======
-  "description" : "",
-  "clientId" : "25861b10-e8d7-4a5f-b28c-582778c26bc3",
-  "projectManagerId" : "f9b090c7-7ad5-4e71-9e38-ebfc89c311ec"
->>>>>>> 68e3ba8a767a6995a7fde6130a30d9a81712f387
+
 } ]

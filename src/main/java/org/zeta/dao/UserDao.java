@@ -1,8 +1,7 @@
 package org.zeta.dao;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import org.zeta.model.Project;
-import org.zeta.model.Role;
+import org.zeta.model.enums.Role;
 import org.zeta.model.User;
 
 import java.util.List;

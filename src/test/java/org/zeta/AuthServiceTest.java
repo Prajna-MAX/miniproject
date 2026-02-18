@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.zeta.dao.UserDao;
-import org.zeta.model.Role;
+import org.zeta.model.enums.Role;
 import org.zeta.model.User;
 import org.zeta.service.implementation.AuthenticationService;
 import org.zeta.validation.ValidationException;

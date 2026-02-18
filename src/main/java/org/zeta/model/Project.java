@@ -1,4 +1,6 @@
 package org.zeta.model;
+import org.zeta.model.enums.ProjectStatus;
+
 import java.time.LocalDate;
 import java.util.UUID;
 

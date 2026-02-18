@@ -13,19 +13,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ClientView {
-
-    // Accept Scanner from Main
     public static void clientDashboard(User client, Scanner sc) {
 
         System.out.println("HEY Client!");
         boolean running = true;
-
         ProjectDao projectDao = new ProjectDao();
         UserDao userDao = new UserDao();
         IClientService clientService = new ClientService(projectDao, userDao);
 
         while (running) {
-
             System.out.println("""
                     1. Submit a project
                     2. View your project updates
@@ -38,13 +34,11 @@ public class ClientView {
                 int clientChoice = CommonValidator.validateInteger(input, "Menu choice");
 
                 switch (clientChoice) {
-
                     case 1 -> {
                         System.out.println("Enter Project Name:");
                         String projectName = sc.nextLine();
                         clientService.submitProject(projectName, client.getId());
                     }
-
                     case 2 -> {
                         List<Project> projects =
                                 clientService.getClientProjects(client.getId());
@@ -58,15 +52,12 @@ public class ClientView {
                             }
                         }
                     }
-
                     case 3 -> {
                         System.out.println("Logging out...");
                         running = false; // return to Main menu
                     }
-
                     default -> System.out.println("Please select a valid option (1-3).");
                 }
-
             } catch (ValidationException e) {
                 System.out.println("Error: " + e.getMessage());
             }

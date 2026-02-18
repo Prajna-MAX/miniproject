@@ -1,4 +1,4 @@
-package org.zeta.model;
+package org.zeta.model.enums;
 
 public enum Role {
     BUILDER,
