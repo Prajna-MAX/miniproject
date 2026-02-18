@@ -1,37 +1,37 @@
 [ {
-  "projectId" : "7749b0ba-33e7-46aa-b604-cb1f1b5bf124",
-  "projectName" : "Brigade",
+  "projectId" : "4b5820db-167f-4a86-92cd-df013cdb4593",
+  "projectName" : "Satva",
   "startDate" : null,
-  "duration" : 0,
-  "status" : "Upcoming",
-  "description" : null,
-  "clientId" : "aac51457-0fca-41c2-8f10-94286808b9a3",
+  "duration" : 30,
+  "status" : "InProgress",
+  "description" : "Construction of four floor building",
+  "clientId" : "a72044ff-ee40-4215-a6d7-9a57b62a6156",
   "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
 }, {
-  "projectId" : "bb0cc1bc-a102-4473-9da0-76484e1fa9f7",
-  "projectName" : "Godrej",
+  "projectId" : "bcfd8bb5-9d05-42ce-aa7c-0cddcc861ee4",
+  "projectName" : "Satva",
   "startDate" : null,
   "duration" : 0,
   "status" : "Upcoming",
   "description" : null,
   "clientId" : "a72044ff-ee40-4215-a6d7-9a57b62a6156",
-  "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
+  "projectManagerId" : "f9b090c7-7ad5-4e71-9e38-ebfc89c311ec"
 }, {
-  "projectId" : "acda99e6-ecc4-4dfc-9297-8ba02503d259",
-  "projectName" : " ",
+  "projectId" : "a2cdf671-937a-4e0d-8750-7821637573ad",
+  "projectName" : "Sobha",
   "startDate" : null,
   "duration" : 0,
-  "status" : "Completed",
+  "status" : "Upcoming",
   "description" : null,
-  "clientId" : "aac51457-0fca-41c2-8f10-94286808b9a3",
-  "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
+  "clientId" : "a72044ff-ee40-4215-a6d7-9a57b62a6156",
+  "projectManagerId" : "49f5a944-afc8-4b5c-abd2-a9cdb81ad2c5"
 }, {
-  "projectId" : "dcd433fc-dbf5-470d-a68b-52f806507ae7",
-  "projectName" : "Satva",
+  "projectId" : "6bf6030a-b7ea-4b10-b071-6f445b5c0ae8",
+  "projectName" : "Brigade",
   "startDate" : null,
-  "duration" : 3,
+  "duration" : 60,
   "status" : "InProgress",
-  "description" : "A Bangalore based project, for accomodating office spaces to be build around 2.5 acres land",
-  "clientId" : "aac51457-0fca-41c2-8f10-94286808b9a3",
-  "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
+  "description" : "",
+  "clientId" : "25861b10-e8d7-4a5f-b28c-582778c26bc3",
+  "projectManagerId" : "f9b090c7-7ad5-4e71-9e38-ebfc89c311ec"
 } ]
