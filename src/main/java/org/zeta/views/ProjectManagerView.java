@@ -13,12 +13,9 @@ import java.util.logging.Logger;
 
 public class ProjectManagerView {
 
-    static Scanner sc = new Scanner(System.in);
-    private static final Logger logger =
-            Logger.getLogger(ProjectManagerView.class.getName());
-
-    static ProjectManagerService managerService =
-            new ProjectManagerService();
+    private static final Scanner sc = new Scanner(System.in);
+    private static final Logger logger = Logger.getLogger(ProjectManagerView.class.getName());
+    private static final ProjectManagerService managerService = new ProjectManagerService();
 
     public static void ProjectManagerDashboard(User projectManager) {
 
@@ -26,7 +23,7 @@ public class ProjectManagerView {
         UserDao userDao = new UserDao();
         TaskDao taskDao = new TaskDao();
 
-        System.out.println("Hi Project Manager: " + projectManager.getUsername());
+        System.out.println("\n===== Welcome, Project Manager: " + projectManager.getUsername() + " =====\n");
 
         boolean running = true;
 
@@ -42,69 +39,108 @@ public class ProjectManagerView {
                     5. List clients
                     6. View projects by client
                     7. Logout
-                    Enter your choice:
                     """);
+            System.out.print("Enter your choice: ");
+            System.out.flush(); // flush stdout before logging
 
             try {
-
-                String input = sc.nextLine();
+                String input = sc.nextLine().trim();
                 int choice = CommonValidator.validateInteger(input, "Menu choice");
+                logger.info("Project Manager selected menu option: " + choice);
 
                 switch (choice) {
 
-                    case 1:
-                        managerService.listProjects(projectDao, projectManager);
-                        break;
+                    case 1 -> managerService.listProjects(projectDao, projectManager);
 
-                    case 2:
-
-                        System.out.println("Enter Project ID to update:");
+                    case 2 -> {
+                        System.out.println("\n--- Add Project Details ---");
+                        System.out.print("Enter Project ID to update: ");
+                        System.out.flush();
                         String projectId = sc.nextLine().trim();
-                        System.out.println("Enter Project Description:");
+
+                        System.out.print("Enter Project Description: ");
+                        System.out.flush();
                         String description = sc.nextLine().trim();
-                        System.out.println("Enter the duration for this project:");
+
+                        System.out.print("Enter the duration for this project (in days): ");
+                        System.out.flush();
                         int durationInput = sc.nextInt();
-                        managerService.addProjectDetails(projectId,description,durationInput,projectDao, projectManager);
-                        break;
+                        sc.nextLine(); // consume newline
 
-                    case 3:System.out.println("Enter Project ID to create task in:");
+                        managerService.addProjectDetails(projectId, description, durationInput, projectDao, projectManager);
+                        System.out.println("Project updated successfully. Status set to IN_PROGRESS.");
+                        System.out.flush();
+                        logger.info("Project details updated for projectId: " + projectId);
+                    }
+
+                    case 3 -> {
+                        System.out.println("\n--- Create Task ---");
+                        System.out.print("Enter Project ID to create task in: ");
+                        System.out.flush();
                         String projectIdForTask = sc.nextLine().trim();
-                        System.out.println("Enter Task Name:");
+
+                        System.out.print("Enter Task Name: ");
+                        System.out.flush();
                         String taskName = sc.nextLine().trim();
-                        managerService.createTask(projectIdForTask,taskName,taskDao, projectDao, projectManager);
-                        break;
 
-                    case 4:
-                        System.out.println("Enter Project ID to assign tasks:");
-                        String projectid = sc.nextLine().trim();
-                        System.out.println("Enter Task ID to assign:");
+                        managerService.createTask(projectIdForTask, taskName, taskDao, projectDao, projectManager);
+                    }
+
+                    case 4 -> {
+                        System.out.println("\n--- Assign Task to Builder ---");
+                        System.out.print("Enter Project ID: ");
+                        System.out.flush();
+                        String projectId = sc.nextLine().trim();
+
+                        System.out.print("Enter Task ID: ");
+                        System.out.flush();
                         String taskId = sc.nextLine().trim();
-                        System.out.println("Enter Builder ID to assign:");
+
+                        System.out.print("Enter Builder ID: ");
+                        System.out.flush();
                         String builderId = sc.nextLine().trim();
-                        managerService.assignTask(projectid,taskId,builderId,taskDao, userDao);
-                        break;
 
-                    case 5:
+                        managerService.assignTask(projectId, taskId, builderId, taskDao, userDao);
+                        System.out.println("Task assignment attempted.");
+                        System.out.flush();
+                        logger.info("Task assignment attempted: taskId=" + taskId + ", builderId=" + builderId);
+                    }
+
+                    case 5 -> {
+                        System.out.println("\n--- List of Clients ---");
+                        System.out.flush();
                         managerService.listClients(userDao);
-                        break;
+                        logger.info("Displayed client list to Project Manager.");
+                    }
 
-                    case 6:
-                        System.out.println("Enter Client Username:");
+                    case 6 -> {
+                        System.out.println("\n--- View Projects by Client ---");
+                        System.out.print("Enter Client Username: ");
+                        System.out.flush();
                         String username = sc.nextLine().trim();
-                        managerService.viewProjectsByClient(username,userDao, projectDao);
-                        break;
 
-                    case 7:
-                        System.out.println("Logging out...");
+                        managerService.viewProjectsByClient(username, userDao, projectDao);
+                        logger.info("Viewed projects for client: " + username);
+                    }
+
+                    case 7 -> {
+                        System.out.println("\nLogging out... Goodbye!");
+                        System.out.flush();
+                        logger.info("Project Manager " + projectManager.getUsername() + " logged out.");
                         running = false;
-                        break;
+                    }
 
-                    default:
-                        System.out.println("Invalid choice. Please try again.");
+                    default -> {
+                        System.out.println("Invalid choice. Please select a valid option (1-7).");
+                        System.out.flush();
+                        logger.warning("Invalid menu choice entered: " + choice);
+                    }
                 }
 
             } catch (ValidationException e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("\nError: " + e.getMessage());
+                System.out.flush();
+                logger.warning("Validation error in ProjectManagerDashboard: " + e.getMessage());
             }
         }
     }

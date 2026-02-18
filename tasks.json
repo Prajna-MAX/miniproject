@@ -70,4 +70,16 @@
   "taskName" : "Task1",
   "builderId" : "B1",
   "status" : "COMPLETED"
+}, {
+  "id" : "afc68fd7-8ba8-4c70-ac1f-2a58d4de379b",
+  "projectId" : "bcfd8bb5-9d05-42ce-aa7c-0cddcc861ee4",
+  "taskName" : "Foundation",
+  "builderId" : null,
+  "status" : "NOT_STARTED"
+}, {
+  "id" : "e564d52b-b673-4f5d-9ec2-38ef847584ba",
+  "projectId" : "9aa9ebca-7bd6-41ff-ab9e-ab01d81cb08d",
+  "taskName" : "Foundation",
+  "builderId" : null,
+  "status" : "NOT_STARTED"
 } ]

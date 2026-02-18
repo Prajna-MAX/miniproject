@@ -10,6 +10,8 @@ import org.zeta.model.Role;
 import org.zeta.model.Task;
 import org.zeta.model.User;
 import org.zeta.service.interfaces.IProjectManagerService;
+import org.zeta.validation.CommonValidator;
+import org.zeta.validation.ValidationException;
 
 import java.util.List;
 import java.util.Optional;
@@ -54,16 +56,21 @@ public class ProjectManagerService{
                                   ProjectDao projectDao,
                                   User manager) {
 
+        try {
+            CommonValidator.validateMinLength(taskName, 3, "Task Name");
+            CommonValidator.validateMinLength(projectId, 3, "Project ID");
+        } catch (ValidationException ValidationException) {
+            System.out.println("Task creation failed: " + ValidationException.getMessage());
+            return;
+        }
 
         Optional<Project> projectOpt = projectDao.findById(projectId);
-
         if (projectOpt.isEmpty()) {
             System.out.println("Project not found.");
             return;
         }
 
         Project project = projectOpt.get();
-
         if (!isAuthorized(project, manager)) {
             System.out.println("You are not authorized to create tasks for this project.");
             return;
@@ -73,12 +80,12 @@ public class ProjectManagerService{
             System.out.println("This project is not available to add tasks.");
             return;
         }
-
         Task newTask = new Task(projectId, taskName);
         taskDao.add(newTask);
 
         System.out.println("Task created successfully with ID: " + newTask.getId());
     }
+
 
     public static void assignTask(String projectId,
                                   String taskId,
