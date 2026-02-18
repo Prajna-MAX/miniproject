@@ -38,7 +38,7 @@ public class Main {
 
                 switch (choice) {
 
-                    case 1 -> { // Registration
+                    case 1 -> {
                         System.out.println("Enter username:");
                         String regUsername = sc.nextLine();
 

@@ -22,7 +22,7 @@ public class UserDao extends BaseDao<User> {
         remove(user);
     }
 
-    public Optional<User> findById(String id) {
+    public  Optional<User> findById(String id) {
         return dataList.stream()
                 .filter(u -> u.getId().equals(id))
                 .findFirst();
@@ -39,7 +39,7 @@ public class UserDao extends BaseDao<User> {
                 .findFirst();
     }
 
-    public List<User> findByRole(Role role) {
+    public  List<User> findByRole(Role role) {
         return dataList.stream()
                 .filter(u -> u.getRole().name().equalsIgnoreCase(String.valueOf(role)))
                 .toList();
