@@ -8,8 +8,12 @@ import org.zeta.dao.TaskDao;
 import org.zeta.dao.UserDao;
 import org.zeta.model.*;
 import org.zeta.service.implementation.ProjectManagerService;
+import org.zeta.validation.CommonValidator;
+
 import java.util.List;
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class ProjectManagerTest {
@@ -63,7 +67,7 @@ public class ProjectManagerTest {
     @Test
     void invalidClient_shouldReturnWhenClientNotFound() {
         when(userDao.findIdbyName("client1")).thenReturn(Optional.empty());
-        ProjectManagerService.viewProjectsByClient("client1",userDao,baseProjectDao);
+        ProjectManagerService.viewProjectsByClient("client1", userDao, baseProjectDao);
         verify(userDao).findIdbyName("client1");
     }
 
@@ -74,6 +78,7 @@ public class ProjectManagerTest {
         verify(taskDao, times(0)).assignBuilder("p1", "p1");
 
     }
+
     @Test
     void assignTask_managerNotFound() {
         when(userDao.findById("p1")).thenReturn(Optional.empty());
@@ -81,6 +86,7 @@ public class ProjectManagerTest {
         verify(taskDao, times(0)).assignBuilder("p1", "p1");
 
     }
+
     @Test
     void testValidBuilderAvailable() {
         task = new Task();
@@ -95,9 +101,10 @@ public class ProjectManagerTest {
     @Test
     void testAddProjectDetails_projectNotFound() {
         when(projectDao.findById("p1")).thenReturn(Optional.empty());
-        ProjectManagerService.addProjectDetails("p1","New",10,projectDao,manager);
-        verify(projectDao,never()).update(any());
+        ProjectManagerService.addProjectDetails("p1", "New", 10, projectDao, manager);
+        verify(projectDao, never()).update(any());
     }
+
     @Test
     void testValidBuilderAssignment() {
         Task task = new Task();
@@ -110,12 +117,14 @@ public class ProjectManagerTest {
         ProjectManagerService.assignTask("p1", "t1", "b1", taskDao, userDao);
         verify(taskDao, times(1)).assignBuilder("t1", "b1");
     }
+
     @Test
     void testEmptyClientList() {
         when(userDao.findByRole(Role.CLIENT)).thenReturn(List.of());
         ProjectManagerService.listClients(userDao);
         verify(userDao, times(1)).findByRole(Role.CLIENT);
     }
+
     @Test
     void testClientList() {
         User client = new User("builder1", "pass", Role.CLIENT);
@@ -125,12 +134,13 @@ public class ProjectManagerTest {
     }
 
     @Test
-    void testcreateTask_projectNotFound(){
+    void testcreateTask_projectNotFound() {
         when(projectDao.findById("p1")).thenReturn(Optional.empty());
-        ProjectManagerService.createTask("p1","T1",taskDao,projectDao,manager);
+        ProjectManagerService.createTask("p1", "T1", taskDao, projectDao, manager);
         verify(taskDao, never()).add(any());
         verify(projectDao, times(1)).findById("p1");
     }
+
     @Test
     void testCreateTask_invalidManager() {
         Project project = new Project();
@@ -142,12 +152,22 @@ public class ProjectManagerTest {
         verify(taskDao, never()).add(any());
     }
 
-@Test
-    void testAddTask(){
-    when(projectDao.findById("p1")).thenReturn(Optional.of(project));
-    ProjectManagerService.createTask("p1","T1",taskDao,projectDao,manager);
-    verify(projectDao, times(1)).findById("p1");
-}
+    @Test
+    void testAddTask() {
+        when(projectDao.findById("p1")).thenReturn(Optional.of(project));
+        ProjectManagerService.createTask("p1", "T1", taskDao, projectDao, manager);
+        verify(projectDao, times(1)).findById("p1");
+    }
 
+    @Test
+    void validateInteger_shouldReturnInteger_whenInputIsValid() {
+        int result = CommonValidator.validateInteger("42", "Menu choice");
+        assertEquals(42, result);
 
+        result = CommonValidator.validateInteger("0", "Menu choice");
+        assertEquals(0, result);
+
+        result = CommonValidator.validateInteger("-99", "Menu choice");
+        assertEquals(-99, result);
+    }
 }

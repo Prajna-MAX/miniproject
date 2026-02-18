@@ -26,7 +26,6 @@ public class CommonValidator {
         }
     }
     public static int validateInteger(String input, String fieldName) {
-
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {

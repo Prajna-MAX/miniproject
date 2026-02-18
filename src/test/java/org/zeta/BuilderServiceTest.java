@@ -9,6 +9,7 @@ import org.zeta.model.Task;
 import org.zeta.model.TaskStatus;
 import org.zeta.model.User;
 import org.zeta.service.implementation.BuilderService;
+import org.zeta.service.implementation.ProjectManagerService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -95,4 +96,5 @@ class BuilderServiceTest {
         System.setOut(originalOut);
         assertTrue(out.toString().contains("ProjectAlpha - Task1"));
     }
+
 }
