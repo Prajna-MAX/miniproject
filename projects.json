@@ -1,0 +1,469 @@
+[ {
+  "projectId" : "4b5820db-167f-4a86-92cd-df013cdb4593",
+  "projectName" : "Satva",
+  "startDate" : null,
+  "duration" : 30,
+  "status" : "InProgress",
+  "description" : "Construction of four floor building",
+  "clientId" : "a72044ff-ee40-4215-a6d7-9a57b62a6156",
+  "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
+}, {
+  "projectId" : "bcfd8bb5-9d05-42ce-aa7c-0cddcc861ee4",
+  "projectName" : "Satva",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "a72044ff-ee40-4215-a6d7-9a57b62a6156",
+  "projectManagerId" : "f9b090c7-7ad5-4e71-9e38-ebfc89c311ec"
+}, {
+  "projectId" : "a2cdf671-937a-4e0d-8750-7821637573ad",
+  "projectName" : "Sobha",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "a72044ff-ee40-4215-a6d7-9a57b62a6156",
+  "projectManagerId" : "49f5a944-afc8-4b5c-abd2-a9cdb81ad2c5"
+}, {
+  "projectId" : "6bf6030a-b7ea-4b10-b071-6f445b5c0ae8",
+  "projectName" : "Brigade",
+  "startDate" : null,
+  "duration" : 60,
+  "status" : "InProgress",
+  "description" : "",
+  "clientId" : "25861b10-e8d7-4a5f-b28c-582778c26bc3",
+  "projectManagerId" : "f9b090c7-7ad5-4e71-9e38-ebfc89c311ec"
+}, {
+  "projectId" : "6803cd5e-4848-4d7a-aa31-a87e037cda87",
+  "projectName" : "TDD Project",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "cb97c127-ef5a-4202-906b-42bdd4ece7a1",
+  "projectManagerId" : "3b65ca20-2254-4f1c-baed-e7e5fca742cd"
+}, {
+  "projectId" : "c276f125-d0ef-4923-ab78-7f98480d0005",
+  "projectName" : "TDD Project",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "91e9f496-d5ae-4cfa-806e-950821860115",
+  "projectManagerId" : "9bcd47ef-4a17-409e-8ed9-468be309c6b0"
+}, {
+  "projectId" : "87a34b65-ba27-4ac0-b78d-f85ce6d2793f",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "d7f5f098-2150-4d73-9185-c96196166813",
+  "projectManagerId" : "bb8f58a4-0239-4ac4-b770-ba4e6606750b"
+}, {
+  "projectId" : "b8f5808e-2b7b-4cf4-be9d-41b23dcaf697",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "d7f5f098-2150-4d73-9185-c96196166813",
+  "projectManagerId" : "ce554624-04f9-40f5-a042-984a562ae5ec"
+}, {
+  "projectId" : "6610b018-c4f5-461a-b105-c3ab47ac2a6f",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "d2393e63-e492-4ab1-9510-0d1290d0d0b2",
+  "projectManagerId" : "6c79b733-2bf4-4476-b388-d185996fef5a"
+}, {
+  "projectId" : "64fd89e5-05da-442c-9b2b-800d5d304a71",
+  "projectName" : "TDD Project",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "3b1b6c84-9b81-4ebe-8db1-4cd67492403e",
+  "projectManagerId" : "37818f7b-9442-406c-aaac-dc62313fa423"
+}, {
+  "projectId" : "54748ce8-985c-4b3f-99a2-38ceb0135c8a",
+  "projectName" : "TDD Project",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "894b643e-92c6-40b8-af56-f0cd24c78058",
+  "projectManagerId" : "660a947b-82ce-492e-a2c8-7fb60fcb7467"
+}, {
+  "projectId" : "58340a11-33de-4828-bcdc-19d268690509",
+  "projectName" : "TDD Project",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "dea806ae-e1f4-4451-a50a-a14803110e79",
+  "projectManagerId" : "be79898e-fcbb-4515-9c73-bd6f9a2c896e"
+}, {
+  "projectId" : "b83ab1fd-45bf-41d6-8fb3-d084d1cf5e83",
+  "projectName" : "TDD Project",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "2c9976a7-07ec-4265-9f55-73fe9f4994f7",
+  "projectManagerId" : "f9b090c7-7ad5-4e71-9e38-ebfc89c311ec"
+}, {
+  "projectId" : "4156090c-8bf1-465e-a0b0-6c1f2926f9ab",
+  "projectName" : "TDD Project",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "5f2f284f-e3f6-4109-bc64-7e03b799d3fa",
+  "projectManagerId" : "49f5a944-afc8-4b5c-abd2-a9cdb81ad2c5"
+}, {
+  "projectId" : "43a7f784-6b98-45e6-bd5a-df1d547467e7",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "96717763-132b-45d3-a72e-a4c98074cd5f",
+  "projectManagerId" : "a846ec0c-80eb-428b-9603-06b1a30ed9aa"
+}, {
+  "projectId" : "db95470f-6c58-4d65-a092-800c243d273a",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "96717763-132b-45d3-a72e-a4c98074cd5f",
+  "projectManagerId" : "fed9dcfb-80d9-466f-b1c4-35a24c5d5ad0"
+}, {
+  "projectId" : "73db700b-d71b-4a6e-abc7-c0a166f5ba14",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "7bcb88dc-9e6f-4ff5-9c6c-020c70f73b2c",
+  "projectManagerId" : "a846ec0c-80eb-428b-9603-06b1a30ed9aa"
+}, {
+  "projectId" : "dfb3c4a7-e697-4222-a9fc-dcacb20c86ba",
+  "projectName" : "TDD Project",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "b9f00a97-ab7b-4498-b365-b6f065996afa",
+  "projectManagerId" : "f9b090c7-7ad5-4e71-9e38-ebfc89c311ec"
+}, {
+  "projectId" : "fb052c08-3db3-4085-a527-d3a6279ed862",
+  "projectName" : "TDD Project",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "39dce9a6-c005-4105-aba6-395367408041",
+  "projectManagerId" : "376f07c4-d916-4c9c-9e7a-b406c33dfcb5"
+}, {
+  "projectId" : "301b3827-df61-47ef-9c42-3d3f1f6f255d",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "1b2a6a46-e40b-459d-8818-929d8c5bc8fb",
+  "projectManagerId" : "9a360269-d911-4d37-8ece-36bc646510a9"
+}, {
+  "projectId" : "b20f455f-c31c-4d29-b31a-12a927697813",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "1b2a6a46-e40b-459d-8818-929d8c5bc8fb",
+  "projectManagerId" : "1edbbb2f-9a35-4261-a8df-52f896f0d037"
+}, {
+  "projectId" : "aee264f8-9d8b-44a2-b860-4c79310b20a9",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "bced9817-d0a7-4f21-9757-da23dabef2fd",
+  "projectManagerId" : "7174d6d6-f549-472e-b890-7e70dd9cd7c7"
+}, {
+  "projectId" : "4dd6d262-fee0-40f1-8fac-8d12a5caa792",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "c5488836-a929-49d1-992a-6e407aacb48c",
+  "projectManagerId" : "9c3fc6e5-eef9-4f91-87a4-3196c49cd342"
+}, {
+  "projectId" : "d6fb4bb1-31ec-4db8-918b-4c695b5e9c07",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "c5488836-a929-49d1-992a-6e407aacb48c",
+  "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
+}, {
+  "projectId" : "976665c6-10f8-4f87-af5b-6da8601ffc2a",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "168ac201-ff66-4f60-80a6-1a4adbc92970",
+  "projectManagerId" : "a846ec0c-80eb-428b-9603-06b1a30ed9aa"
+}, {
+  "projectId" : "aec4c61a-aa86-4b1d-884e-8b58fbd76c04",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "3c932350-7aea-4128-bb43-d37a3078922b",
+  "projectManagerId" : "7dc17328-4d1e-41b6-846a-b8d87fd8e401"
+}, {
+  "projectId" : "76df54cd-6ded-41da-a7c2-906180384833",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "3c932350-7aea-4128-bb43-d37a3078922b",
+  "projectManagerId" : "9a360269-d911-4d37-8ece-36bc646510a9"
+}, {
+  "projectId" : "b75b8370-960e-4ae7-92d6-0fc4f1ac52c5",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "ae0280be-6c3f-41df-a5d1-608c28f8e424",
+  "projectManagerId" : "b839a084-fd8c-4482-ba91-f5a585cec3e1"
+}, {
+  "projectId" : "4e66a4dc-73bb-4ab3-be5f-1d62591a3f76",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "58a348c1-d186-4bf6-bf25-15eb3af3d8ff",
+  "projectManagerId" : "30e60476-2cdf-4169-aa4d-11e3299c714b"
+}, {
+  "projectId" : "9a17fa8d-0af3-4027-9fc7-4276acc87523",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "58a348c1-d186-4bf6-bf25-15eb3af3d8ff",
+  "projectManagerId" : "49f5a944-afc8-4b5c-abd2-a9cdb81ad2c5"
+}, {
+  "projectId" : "aad7a428-ed04-47ee-82e9-2da3398a785b",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "d27f69de-36af-45d0-b390-6767663d1447",
+  "projectManagerId" : "b8f29354-37bc-4f19-a1e2-bfe1a454ab35"
+}, {
+  "projectId" : "e579b5e6-5c7a-49b5-ad9c-d77b232f83bf",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "42b77cf4-8a83-4b90-bf55-20ecd7d886d9",
+  "projectManagerId" : "fed9dcfb-80d9-466f-b1c4-35a24c5d5ad0"
+}, {
+  "projectId" : "7024d46e-2e43-44b7-bbdc-09f70a4adb13",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "42b77cf4-8a83-4b90-bf55-20ecd7d886d9",
+  "projectManagerId" : "6128373a-deed-4c00-8eb8-03a68ec89e1d"
+}, {
+  "projectId" : "777777e4-b25c-48cf-ab4a-ef15fa9f0515",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "ddfa038d-d490-4624-9d58-7becef8c019f",
+  "projectManagerId" : "33b75fd5-ff4e-4ffe-bf6c-dab6902c437e"
+}, {
+  "projectId" : "21e211ca-b011-4255-a9dd-266a29471751",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "d3ac87e2-e9f6-4eac-a31b-8fa72e0a3538",
+  "projectManagerId" : "9a360269-d911-4d37-8ece-36bc646510a9"
+}, {
+  "projectId" : "23d12856-a4c9-45d8-8344-4d0da47195c0",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "d3ac87e2-e9f6-4eac-a31b-8fa72e0a3538",
+  "projectManagerId" : "33b75fd5-ff4e-4ffe-bf6c-dab6902c437e"
+}, {
+  "projectId" : "0699a4c2-d556-4a03-af45-09fcdf252bf6",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "f20f5290-e3d7-4414-a4da-f024d7ee12da",
+  "projectManagerId" : "1052ac70-7cb4-4d95-bf59-1aa7b36f6062"
+}, {
+  "projectId" : "76b6fc40-6adf-402f-8fb6-33d3d8b250e6",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "4a6958eb-f6c3-4ec0-8587-38d7d376e587",
+  "projectManagerId" : "b2a2f8ff-7505-4c75-9ec8-6f113e689377"
+}, {
+  "projectId" : "6ddb1c39-3ad5-4376-b564-6bdf67a822ef",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "4a6958eb-f6c3-4ec0-8587-38d7d376e587",
+  "projectManagerId" : "8fac654c-371b-486b-92af-e987d15d03c1"
+}, {
+  "projectId" : "dca74557-51b4-4fc2-9817-1dbd2b66e569",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "38c3dbe5-2c61-4e50-b7b9-aadbfc678ab2",
+  "projectManagerId" : "cc074a7e-fa38-439a-9f72-878d4df8b77c"
+}, {
+  "projectId" : "3073e9da-6333-4ed4-a2af-ca6376b1ea9e",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "58323a8a-034d-4c82-94fd-e2e354215cd1",
+  "projectManagerId" : "30e60476-2cdf-4169-aa4d-11e3299c714b"
+}, {
+  "projectId" : "778abce0-f014-46fd-ad31-858646ea89eb",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "58323a8a-034d-4c82-94fd-e2e354215cd1",
+  "projectManagerId" : "b72564aa-6b43-4863-b6a9-46b9ba7e4fb0"
+}, {
+  "projectId" : "d39cee57-7a51-4a20-a529-9490a6e45d09",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "4c139ea4-c517-4141-8c0d-c54abfd542c7",
+  "projectManagerId" : "b995f2d7-326e-4f6b-bb1d-7be359c82d87"
+}, {
+  "projectId" : "06df1ea6-e619-4bcf-9b53-4b35a90d3538",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "a2a164d6-7012-4e1f-aa50-b7466054d6fe",
+  "projectManagerId" : "0f1260b1-8410-4bdc-b215-d4fc24a1916f"
+}, {
+  "projectId" : "379effb1-eaf6-4dc8-b155-c77010275ec4",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "a2a164d6-7012-4e1f-aa50-b7466054d6fe",
+  "projectManagerId" : "e1682680-9aef-45bf-9b0b-d644b419b14f"
+}, {
+  "projectId" : "0fc6affe-1e1d-4d42-937f-032d859e0e00",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "5a0dad57-7247-4239-9a3e-fa7c1ac87de5",
+  "projectManagerId" : "8be45ba1-3f36-4bbe-9dd1-fa4e9ccd283e"
+}, {
+  "projectId" : "84762774-d93d-4986-ac70-5dddf79fe2c2",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "191b7ba4-1952-43a0-8221-fe57458fb4ca",
+  "projectManagerId" : "c6d0be54-037a-4c6f-9669-77eb24faa4ca"
+}, {
+  "projectId" : "ff5a8834-fc2b-4777-84c9-dea5ce70d554",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "191b7ba4-1952-43a0-8221-fe57458fb4ca",
+  "projectManagerId" : "8be45ba1-3f36-4bbe-9dd1-fa4e9ccd283e"
+}, {
+  "projectId" : "d58f0aaa-995b-47ac-ac5d-33817fb72bfc",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "6df4d89a-bbe2-4250-8c90-52110ef435eb",
+  "projectManagerId" : "cc629e1c-705e-40be-aea1-521480f5441f"
+}, {
+  "projectId" : "987c079b-ad5e-4a8c-a4d6-c0981cd3a927",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "a837e230-94e8-479a-a71f-ba371d44a8fd",
+  "projectManagerId" : "b839a084-fd8c-4482-ba91-f5a585cec3e1"
+}, {
+  "projectId" : "0dfea70f-749e-4ccc-b198-934ba7d090f5",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "a837e230-94e8-479a-a71f-ba371d44a8fd",
+  "projectManagerId" : "cc629e1c-705e-40be-aea1-521480f5441f"
+}, {
+  "projectId" : "9ff9a8d2-3585-4986-bf84-8775e6f3da8d",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "description" : null,
+  "clientId" : "b8f6113c-fda7-415f-9854-dc9012d8a95f",
+  "projectManagerId" : "e3bd4899-89e1-42de-8956-fc5ccc3f840b"
+} ]
