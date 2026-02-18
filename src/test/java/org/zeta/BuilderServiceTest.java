@@ -26,12 +26,9 @@ class BuilderServiceTest {
 
     @BeforeEach
     void setup() {
-
         taskDao = mock(TaskDao.class);
-
         builder = new User();
         builder.setId("B1");
-
         Task t1 = new Task();
         t1.setId("T1");
         t1.setBuilderId("B1");

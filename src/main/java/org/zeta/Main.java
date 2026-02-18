@@ -12,6 +12,7 @@ import org.zeta.views.ClientView;
 import org.zeta.views.ProjectManagerView;
 
 import java.io.IOException;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -25,8 +26,8 @@ public class Main {
         UserDao userDAO = new UserDao();
         AuthenticationService authService = new AuthenticationService(userDAO);
         ObjectMapper mapper = new ObjectMapper();
-
-        while (true) {
+boolean running=true;
+        while (running) {
 
             System.out.println("\nPlease choose:");
             System.out.println("1. Register");
@@ -115,9 +116,14 @@ public class Main {
                     default -> System.out.println("Invalid choice. Please enter 1, 2, or 3.");
                 }
 
-            } catch (ValidationException ve) {
-                System.out.println("Error: " + ve.getMessage());
+            }catch (NoSuchElementException NoSuchElementException) {
+                running=false;
+                logger.warning("Error:" + NoSuchElementException.getMessage());
+            }
+            catch (ValidationException ValidationException) {
+
+                logger.warning("Error: " + ValidationException.getMessage());
             }
         }
-    }
-}
+    }}
+

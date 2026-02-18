@@ -1,17 +1,16 @@
 package org.zeta.dao;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.zeta.model.Project;
+
 import java.util.List;
 import java.util.Optional;
 
 public class ProjectDao extends BaseDao<Project> {
 
     public ProjectDao() {
-        super("projects.json", new TypeReference<List<Project>>() {});
-    }
-
-    public ProjectDao(String fileName) {
-        super(fileName, new TypeReference<List<Project>>() {});
+        super("projects.json", new TypeReference<List<Project>>() {
+        });
     }
 
     public void saveProject(Project project) {
@@ -28,11 +27,6 @@ public class ProjectDao extends BaseDao<Project> {
                 .findFirst();
     }
 
-    public List<Project> findByProjectManager(String managerId) {
-        return dataList.stream()
-                .filter(p -> managerId.equals(p.getProjectManagerId()))
-                .toList();
-    }
 
     public List<Project> findByClient(String clientId) {
         return dataList.stream()
@@ -40,24 +34,6 @@ public class ProjectDao extends BaseDao<Project> {
                 .toList();
     }
 
-    public List<Project> findByStatus(String status) {
-        return dataList.stream()
-                .filter(p -> p.getStatus().name().equalsIgnoreCase(status))
-                .toList();
-    }
-    public void assignBuilder(String projectId, String builderId) {
-
-        Optional<Project> projectOpt = findById(projectId);
-
-        if (projectOpt.isEmpty()) {
-            System.out.println("Project not found.");
-            return;
-        }
-
-        Project project = projectOpt.get();
-
-        update(project);
-    }
 
     public void update(Project updatedProject) {
         findById(updatedProject.getProjectId()).ifPresent(existing -> {

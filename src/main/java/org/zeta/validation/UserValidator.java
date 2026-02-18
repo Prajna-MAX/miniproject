@@ -25,7 +25,6 @@ public class UserValidator {
         CommonValidator.validateMinLength(username, 3, "Username");
         CommonValidator.validateMinLength(password, 6, "Password");
 
-        // 🔹 Username format check
         if (!USERNAME_PATTERN.matcher(username).matches()) {
             throw new ValidationException("""
                     Invalid username format:
@@ -36,12 +35,9 @@ public class UserValidator {
                     """);
         }
 
-        // 🔹 Password match check
         if (!password.equals(confirmPassword)) {
             throw new ValidationException("Passwords do not match.");
         }
-
-        // 🔹 Role check
         if (role == null) {
             throw new ValidationException("Role must be selected.");
         }

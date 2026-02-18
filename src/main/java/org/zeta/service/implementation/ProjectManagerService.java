@@ -9,12 +9,13 @@ import org.zeta.model.ProjectStatus;
 import org.zeta.model.Role;
 import org.zeta.model.Task;
 import org.zeta.model.User;
+import org.zeta.service.interfaces.IProjectManagerService;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-public class ProjectManagerService {
+public class ProjectManagerService{
 
     private static final Logger logger =
             Logger.getLogger(ProjectManagerService.class.getName());

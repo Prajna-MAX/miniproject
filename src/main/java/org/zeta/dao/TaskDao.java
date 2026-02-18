@@ -18,10 +18,6 @@ public class TaskDao extends BaseDao<Task> {
         add(task);
     }
 
-    public void deleteTask(Task task) {
-        remove(task);
-    }
-
     public  Optional<Task> findById(String id) {
         return dataList.stream()
                 .filter(t -> t.getId().equals(id))
@@ -34,23 +30,9 @@ public class TaskDao extends BaseDao<Task> {
                 .toList();
     }
 
-    public List<Task> findByBuilderId(Integer builderId) {
-        return dataList.stream()
-                .filter(t -> t.getBuilderId() != null && t.getBuilderId().equals(builderId))
-                .toList();
-    }
-
-
     public void assignBuilder(String taskId, String builderId) {
         findById(taskId).ifPresent(task -> {
             task.setBuilderId(builderId);
-            update(task);
-        });
-    }
-
-    public void updateStatus(String taskId, TaskStatus status) {
-        findById(taskId).ifPresent(task -> {
-            task.setStatus(status);
             update(task);
         });
     }
