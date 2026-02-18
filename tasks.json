@@ -1,10 +1,4 @@
 [ {
-  "id" : "f5a03388-f150-4589-91c3-3423c1136bb3",
-  "projectId" : "6bf6030a-b7ea-4b10-b071-6f445b5c0ae8",
-  "taskName" : "get materials",
-  "builderId" : null,
-  "status" : "NOT_STARTED"
-}, {
   "id" : "aeaba12e-0782-4590-8370-d069c16b631e",
   "projectId" : "6bf6030a-b7ea-4b10-b071-6f445b5c0ae8",
   "taskName" : "wash the floor",
@@ -16,4 +10,10 @@
   "taskName" : "Task1",
   "builderId" : "B1",
   "status" : "COMPLETED"
+}, {
+  "id" : "f5a03388-f150-4589-91c3-3423c1136bb3",
+  "projectId" : "6bf6030a-b7ea-4b10-b071-6f445b5c0ae8",
+  "taskName" : "get materials",
+  "builderId" : "847df785-01e1-4bb2-8d28-b061e1e64256",
+  "status" : "NOT_STARTED"
 } ]

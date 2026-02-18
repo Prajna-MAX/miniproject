@@ -74,12 +74,6 @@ public class ProjectManagerService {
             System.out.println("No tasks found for this project.");
             return;
         }
-        System.out.println("\n--- Available Tasks ---");
-        for (Task t : tasks) {
-            if (t.getBuilderId() == null) {
-                System.out.println(t.getId() + " - " + t.getTaskName());
-            }
-        }
         List<User> builders = userDao.findByRole(Role.BUILDER);
 
         if (builders.isEmpty()) {
@@ -87,10 +81,6 @@ public class ProjectManagerService {
             return;
         }
 
-        System.out.println("\n--- Builders ---");
-        for (User b : builders) {
-            System.out.println(b.getId() + " - " + b.getUsername());
-        }
         boolean builderExists = builders.stream()
                 .anyMatch(b -> b.getId().equals(builderId));
 
