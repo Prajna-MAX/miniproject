@@ -21,40 +21,36 @@ public class ProjectManagerService {
     private static final Logger logger = Logger.getLogger(ProjectManagerService.class.getName());
 
 
+static void checkValidManager(Project project, User manager) {
+    if (!project.getProjectManagerId().equals(manager.getId())) {
+        System.out.println("You are not authorized to modify this project.");
+        return;
+    }
+}
     public static void listProjects(BaseDao<Project> projectDao, User manager) {
-
         List<Project> projects = projectDao.getAll();
-
         System.out.println("\n--- Here are the new projects ---");
-
         boolean found = false;
-
         for (Project p : projects) {
             if (p.getProjectManagerId().equals(manager.getId())
                     && p.getStatus() == ProjectStatus.Upcoming) {
-
                 System.out.println(p.getProjectId() + " - " + p.getProjectName());
                 found = true;
             }
         }
-
         if (!found) {
             System.out.println("No upcoming projects found.");
         }
     }
 
-    public static void createTask(String projectId,TaskDao taskDao,
+    public static void createTask(String projectId,String taskName,TaskDao taskDao,
                                   ProjectDao projectDao,
                                   User manager) {
-
-
         Optional<Project> projectOpt = projectDao.findById(projectId);
-
         if (projectOpt.isEmpty()) {
             System.out.println("Project not found. Make sure to enter the correct ID!");
             return;
         }
-
         Project project = projectOpt.get();
 
         if (!project.getProjectManagerId().equals(manager.getId())) {
@@ -66,20 +62,14 @@ public class ProjectManagerService {
             System.out.println("This project is not available to add task.");
             return;
         }
-
-        System.out.println("Enter Task Name:");
-        String taskName = sc.nextLine().trim();
-
         Task newTask = new Task(projectId, taskName);
-
         taskDao.add(newTask);
-
         System.out.println("Task created successfully with ID: " + newTask.getId());
     }
 
 
 
-    public static void assignTask(String projectId,TaskDao taskDao, UserDao userDao) {
+    public static void assignTask(String projectId,String taskId,String builderId,TaskDao taskDao, UserDao userDao) {
 
         List<Task> tasks = taskDao.findByProjectId(projectId);
         if (tasks.isEmpty()) {
@@ -93,10 +83,6 @@ public class ProjectManagerService {
                 System.out.println(t.getId() + " - " + t.getTaskName());
             }
         }
-
-        System.out.println("Enter Task ID to assign:");
-        String taskId = sc.nextLine().trim();
-
         List<User> builders = userDao.findByRole(Role.BUILDER);
         if (builders.isEmpty()) {
             System.out.println("No builders available.");
@@ -107,10 +93,6 @@ public class ProjectManagerService {
         for (User b : builders) {
             System.out.println(b.getId() + " - " + b.getUsername());
         }
-
-        System.out.println("Enter Builder ID to assign:");
-        String builderId = sc.nextLine().trim();
-
         if(builders.stream().anyMatch(b->b.getId().equals(builderId))) {
             taskDao.assignBuilder(taskId, builderId);
             System.out.println("Builder assigned to task successfully.");
@@ -146,23 +128,16 @@ public class ProjectManagerService {
         }
 
     }
-    public static void addProjectDetails(String projectId,String description,ProjectDao projectDao, User manager) {
+    public static void addProjectDetails(String projectId,String description,int durationInput,ProjectDao projectDao, User manager) {
         Optional<Project> projectOpt = projectDao.findById(projectId);
         if (projectOpt.isEmpty()) {
             System.out.println("Project not found.");
             return;
         }
         Project project = projectOpt.get();
-        if (!project.getProjectManagerId().equals(manager.getId())) {
-            System.out.println("You are not authorized to modify this project.");
-            return;
-        }
-
-        System.out.println("Enter the duration for this project:");
-        int durationInput = sc.nextInt();
+        checkValidManager(project,manager);
 
         try {
-
             project.setDescription(description);
             project.setDuration(durationInput);
             project.setStatus(ProjectStatus.InProgress);

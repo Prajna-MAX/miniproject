@@ -62,20 +62,27 @@ public class ProjectManagerView {
                         String projectId = sc.nextLine().trim();
                         System.out.println("Enter Project Description:");
                         String description = sc.nextLine().trim();
-                        managerService.addProjectDetails(projectId,description,projectDao, projectManager);
+
+                        System.out.println("Enter the duration for this project:");
+                        int durationInput = sc.nextInt();
+                        managerService.addProjectDetails(projectId,description,durationInput,projectDao, projectManager);
                         break;
 
                     case 3:System.out.println("Enter Project ID to create task in:");
                         String projectIdForTask = sc.nextLine().trim();
-
-                        managerService.createTask(projectIdForTask,taskDao, projectDao, projectManager);
+                        System.out.println("Enter Task Name:");
+                        String taskName = sc.nextLine().trim();
+                        managerService.createTask(projectIdForTask,taskName,taskDao, projectDao, projectManager);
                         break;
 
                     case 4:
                         System.out.println("Enter Project ID to assign tasks:");
                         String projectid = sc.nextLine().trim();
-
-                        managerService.assignTask(projectid,taskDao, userDao);
+                        System.out.println("Enter Task ID to assign:");
+                        String taskId = sc.nextLine().trim();
+                        System.out.println("Enter Builder ID to assign:");
+                        String builderId = sc.nextLine().trim();
+                        managerService.assignTask(projectid,taskId,builderId,taskDao, userDao);
                         break;
 
                     case 5:
