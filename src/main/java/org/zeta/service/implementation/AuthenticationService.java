@@ -1,17 +1,15 @@
 package org.zeta.service.implementation;
 
 import org.zeta.dao.UserDao;
-import org.zeta.model.Role;
+import org.zeta.model.enums.Role;
 import org.zeta.model.User;
 import org.zeta.service.interfaces.IAuthenticationService;
 import org.zeta.validation.UserValidator;
 import org.zeta.validation.ValidationException;
-
 import java.util.Optional;
 import java.util.logging.Logger;
 
 public class AuthenticationService implements IAuthenticationService {
-
     private final UserDao userDao;
     private static final Logger logger =
             Logger.getLogger(AuthenticationService.class.getName());
@@ -26,7 +24,6 @@ public class AuthenticationService implements IAuthenticationService {
                             String confirmPassword,
                             Role role) {
         try {
-
             UserValidator.validateRegistration(username, password, confirmPassword, role);
             if (userDao.findByUsername(username).isPresent()) {
                 throw new ValidationException("User already exists.");
@@ -52,5 +49,4 @@ public class AuthenticationService implements IAuthenticationService {
         }
         throw new ValidationException("Invalid username or password.");
     }
-
 }

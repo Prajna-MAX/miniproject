@@ -1,4 +1,6 @@
 package org.zeta.model;
+import org.zeta.model.enums.ProjectStatus;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -9,6 +11,7 @@ public class Project {
     private LocalDate startDate;
     private int duration;
     private ProjectStatus status;
+    private float budget;
     private String description ;
     private String clientId;
     private String projectManagerId;
@@ -31,7 +34,8 @@ public class Project {
                    ProjectStatus status,
                    String description,
                    String clientId,
-                   String projectManagerId) {
+                   String projectManagerId,
+                   float budget) {
 
         this.projectId = projectId;
         this.projectName = projectName;
@@ -40,6 +44,7 @@ public class Project {
         this.status = status;
         this.clientId = clientId;
         this.projectManagerId = projectManagerId;
+        this.budget = budget;
     }
 
     public String getProjectId() {

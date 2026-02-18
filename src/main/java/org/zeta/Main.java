@@ -1,7 +1,7 @@
 package org.zeta;
 
 import org.zeta.dao.UserDao;
-import org.zeta.model.Role;
+import org.zeta.model.enums.Role;
 import org.zeta.model.User;
 import org.zeta.service.implementation.AuthenticationService;
 import org.zeta.validation.CommonValidator;
@@ -10,7 +10,7 @@ import org.zeta.views.BuilderView;
 import org.zeta.views.ClientView;
 import org.zeta.views.ProjectManagerView;
 
-import java.util.Objects;
+import java.io.Console;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -18,7 +18,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         Logger logger = Logger.getLogger("main");
 
         UserDao userDAO = new UserDao();
@@ -33,20 +33,31 @@ public class Main {
 
             try {
 
-                String input = sc.nextLine();
+                String input = scanner.nextLine();
                 int choice = CommonValidator.validateInteger(input, "Menu choice");
 
                 switch (choice) {
 
                     case 1 -> {
                         System.out.println("Enter username:");
-                        String regUsername = sc.nextLine();
+                        String regUsername = scanner.nextLine();
 
-                        System.out.println("Enter password:");
-                        String regPassword = sc.nextLine();
+                        Console console = System.console();
+                        String regPassword;
+                        String confirmPassword;
 
-                        System.out.println("Confirm password:");
-                        String confirmPassword = sc.nextLine();
+                        if (console != null) {
+                            regPassword = new String(console.readPassword("Enter password: "));
+                            confirmPassword = new String(console.readPassword("Confirm password: "));
+                        } else {
+                            // IntelliJ fallback
+                            System.out.println("Enter password:");
+                            regPassword = scanner.nextLine();
+
+                            System.out.println("Confirm password:");
+                            confirmPassword = scanner.nextLine();
+                        }
+
                         Role selectedRole = null;
                         while (selectedRole == null) {
                             System.out.println("""
@@ -57,13 +68,9 @@ public class Main {
                                     Enter your choice:
                                     """);
 
-                            if (!sc.hasNextInt()) {
-                                System.out.println("Invalid input. Please enter a number.");
-                                sc.nextLine();
-                                continue;
-                            }
-                            int roleChoice = sc.nextInt();
-                            sc.nextLine();
+                            String roleInput = scanner.nextLine();
+                            int roleChoice =
+                                    CommonValidator.validateInteger(roleInput, "Role choice");
 
                             switch (roleChoice) {
                                 case 1 -> selectedRole = Role.BUILDER;
@@ -73,34 +80,45 @@ public class Main {
                             }
                         }
 
-                        boolean registered = authService.register(regUsername, regPassword, confirmPassword, selectedRole);
+                        boolean registered = authService.register(
+                                regUsername, regPassword, confirmPassword, selectedRole
+                        );
+
                         if (registered) {
                             System.out.println("Registration successful!");
                         } else {
-                            System.out.println("Registration failed. User may already exist or data is invalid.");
+                            System.out.println("Registration failed.");
                         }
                     }
 
                     case 2 -> {
                         System.out.println("Enter username:");
-                        String loginUsername = sc.nextLine();
+                        String loginUsername = scanner.nextLine();
 
-                        System.out.println("Enter password:");
-                        String loginPassword = sc.nextLine();
+                        Console console = System.console();
+                        String loginPassword;
+
+                        if (console != null) {
+                            loginPassword = new String(console.readPassword("Enter password: "));
+                        } else {
+                            System.out.println("Enter password:");
+                            loginPassword = scanner.nextLine();
+                        }
 
                         try {
                             User loggedInUser = authService.login(loginUsername, loginPassword);
                             System.out.println("Welcome " + loggedInUser.getUsername());
 
-                            // Role-based dashboards
                             Role role = loggedInUser.getRole();
+
                             if (role == Role.CLIENT) {
-                                ClientView.clientDashboard(loggedInUser);
+                                ClientView.clientDashboard(loggedInUser, scanner);
                             } else if (role == Role.BUILDER) {
-                                BuilderView.builderDashboard(loggedInUser);
+                                BuilderView.builderDashboard(loggedInUser, scanner);
                             } else if (role == Role.PROJECT_MANAGER) {
-                                ProjectManagerView.ProjectManagerDashboard(loggedInUser);
+                                ProjectManagerView.ProjectManagerDashboard(loggedInUser, scanner);
                             }
+
                         } catch (ValidationException e) {
                             logger.severe("Login failed: " + e.getMessage());
                         }
@@ -108,6 +126,7 @@ public class Main {
 
                     case 3 -> {
                         System.out.println("Exiting application...");
+                        scanner.close();
                         System.exit(0);
                     }
 

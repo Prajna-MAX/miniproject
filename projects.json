@@ -1,4 +1,7 @@
 [ {
+
+  "projectId" : "bb0cc1bc-a102-4473-9da0-76484e1fa9f7",
+  "projectName" : "Godrej",
   "projectId" : "4b5820db-167f-4a86-92cd-df013cdb4593",
   "projectName" : "Satva",
   "startDate" : null,
@@ -31,7 +34,17 @@
   "startDate" : null,
   "duration" : 60,
   "status" : "InProgress",
-  "description" : "",
-  "clientId" : "25861b10-e8d7-4a5f-b28c-582778c26bc3",
-  "projectManagerId" : "f9b090c7-7ad5-4e71-9e38-ebfc89c311ec"
+  "description" : "A Bangalore based project, for accomodating office spaces to be build around 2.5 acres land",
+  "clientId" : "aac51457-0fca-41c2-8f10-94286808b9a3",
+  "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
+}, {
+  "projectId" : "7749b0ba-33e7-46aa-b604-cb1f1b5bf124",
+  "projectName" : "Brigade",
+  "startDate" : null,
+  "duration" : 3,
+  "status" : "InProgress",
+  "description" : "this is a small project",
+  "clientId" : "aac51457-0fca-41c2-8f10-94286808b9a3",
+  "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
+
 } ]

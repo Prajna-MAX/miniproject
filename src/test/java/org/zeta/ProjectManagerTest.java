@@ -7,6 +7,8 @@ import org.zeta.dao.ProjectDao;
 import org.zeta.dao.TaskDao;
 import org.zeta.dao.UserDao;
 import org.zeta.model.*;
+import org.zeta.model.enums.ProjectStatus;
+import org.zeta.model.enums.Role;
 import org.zeta.service.implementation.ProjectManagerService;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +23,7 @@ public class ProjectManagerTest {
     private User manager;
     private Project project;
     Task task;
-    Builder builder;
+    User user;
 
     @BeforeEach
     void setUp() {
@@ -84,10 +86,10 @@ public class ProjectManagerTest {
     @Test
     void testValidBuilderAvailable() {
         task = new Task();
-        builder = new Builder();
-        builder.setId("5L");
+        user = new User();
+        user.setId("5L");
         when(taskDao.findByProjectId("p1")).thenReturn(List.of(task));
-        when(userDao.findByRole(Role.BUILDER)).thenReturn(List.of(builder));
+        when(userDao.findByRole(Role.BUILDER)).thenReturn(List.of(user));
         ProjectManagerService.assignTask("p1", "1L", "5L", taskDao, userDao);
         verify(taskDao, times(1)).assignBuilder("1L", "5L");
     }

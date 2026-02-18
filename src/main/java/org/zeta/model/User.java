@@ -1,5 +1,7 @@
 package org.zeta.model;
 
+import org.zeta.model.enums.Role;
+
 import java.util.UUID;
 
 public class User {
