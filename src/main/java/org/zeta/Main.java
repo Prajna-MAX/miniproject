@@ -1,8 +1,11 @@
 package org.zeta;
 
+import org.zeta.dao.ProjectDao;
+import org.zeta.dao.TaskDao;
 import org.zeta.dao.UserDao;
 import org.zeta.model.enums.Role;
 import org.zeta.model.User;
+import org.zeta.scheduler.ProjectStatusScheduler;
 import org.zeta.service.implementation.AuthenticationService;
 import org.zeta.validation.CommonValidator;
 import org.zeta.validation.ValidationException;
@@ -14,6 +17,8 @@ import java.io.Console;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+
+
 public class Main {
 
     public static void main(String[] args) {
@@ -21,8 +26,14 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Logger logger = Logger.getLogger("main");
 
+        ProjectDao projectDao = new ProjectDao();
+        TaskDao taskDao = new TaskDao();
         UserDao userDAO = new UserDao();
         AuthenticationService authService = new AuthenticationService(userDAO);
+        ProjectStatusScheduler scheduler =
+                new ProjectStatusScheduler(projectDao, taskDao);
+
+        scheduler.start();
 
         while (true) {
 
@@ -125,6 +136,8 @@ public class Main {
                     }
 
                     case 3 -> {
+                        System.out.println("Shutting down scheduler...");
+                        scheduler.stop();
                         System.out.println("Exiting application...");
                         scanner.close();
                         System.exit(0);
