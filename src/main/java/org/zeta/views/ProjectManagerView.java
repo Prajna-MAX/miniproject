@@ -65,10 +65,9 @@ public class ProjectManagerView {
                         managerService.addProjectDetails(projectId,description,projectDao, projectManager);
                         break;
 
-                    case 3:System.out.println("Enter Project ID to create task in:");
-                        String projectIdForTask = sc.nextLine().trim();
-
-                        managerService.createTask(projectIdForTask,taskDao, projectDao, projectManager);
+                    case 3:
+                        System.out.println("Choose the project you want to create task for");
+                        managerService.createTask(taskDao, projectDao, projectManager);
                         break;
 
                     case 4:

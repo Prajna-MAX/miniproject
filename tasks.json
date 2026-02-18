@@ -46,4 +46,10 @@
   "taskName" : "Floor Tiling",
   "builderId" : "847df785-01e1-4bb2-8d28-b061e1e64256",
   "status" : "NOT_STARTED"
+}, {
+  "id" : "5f002fc9-5d0d-4f63-85b0-408e0f50fea1",
+  "projectId" : "dcd433fc-dbf5-470d-a68b-52f806507ae7",
+  "taskName" : "plaster",
+  "builderId" : null,
+  "status" : "NOT_STARTED"
 } ]

@@ -43,20 +43,42 @@ public class ProjectManagerService {
         }
     }
 
-    public static void createTask(String projectId,TaskDao taskDao,
+    public static void createTask(TaskDao taskDao,
                                   ProjectDao projectDao,
                                   User manager) {
 
+        List<Project> projects = projectDao.getAll();
+
+        List<Project> assignedProjects = projects.stream()
+                .filter(p -> p.getProjectManagerId().equals(manager.getId())
+                        && p.getStatus() == ProjectStatus.InProgress)
+                .toList();
+
+        if (assignedProjects.isEmpty()) {
+            System.out.println("No In-Progress projects available to create tasks.");
+            return;
+        }
+
+        // 🔹 Step 3: Display projects
+        System.out.println("\n--- Your In-Progress Projects ---");
+        assignedProjects.forEach(p ->
+                System.out.println(p.getProjectId() + " - " + p.getProjectName())
+        );
+
+        // 🔹 Step 4: Ask for project ID
+        System.out.println("Enter Project ID to create task:");
+        String projectId = sc.nextLine().trim();
 
         Optional<Project> projectOpt = projectDao.findById(projectId);
 
         if (projectOpt.isEmpty()) {
-            System.out.println("Project not found. Make sure to enter the correct ID!");
+            System.out.println("Project not found.");
             return;
         }
 
         Project project = projectOpt.get();
 
+        // 🔒 Ensure it belongs to manager
         if (!project.getProjectManagerId().equals(manager.getId())) {
             System.out.println("You are not authorized to create tasks for this project.");
             return;
@@ -67,15 +89,16 @@ public class ProjectManagerService {
             return;
         }
 
+        // 🔹 Step 5: Create Task
         System.out.println("Enter Task Name:");
         String taskName = sc.nextLine().trim();
 
         Task newTask = new Task(projectId, taskName);
-
         taskDao.add(newTask);
 
         System.out.println("Task created successfully with ID: " + newTask.getId());
     }
+
 
 
 
