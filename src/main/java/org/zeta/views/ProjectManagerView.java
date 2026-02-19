@@ -3,34 +3,32 @@ package org.zeta.views;
 import org.zeta.dao.ProjectDao;
 import org.zeta.dao.TaskDao;
 import org.zeta.dao.UserDao;
-import org.zeta.model.enums.ProjectStatus;
-import org.zeta.model.enums.Role;
-import org.zeta.model.enums.TaskStatus;
 import org.zeta.model.User;
 import org.zeta.service.implementation.ProjectManagerService;
 import org.zeta.validation.CommonValidator;
 import org.zeta.validation.ValidationException;
-import java.util.List;
-import org.zeta.model.Project;
-import org.zeta.model.Task;
+
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class ProjectManagerView {
 
-    private static final Logger logger =
-            Logger.getLogger(ProjectManagerView.class.getName());
-    static ProjectManagerService managerService =
-            new ProjectManagerService();
+    private static final Scanner sc = new Scanner(System.in);
+    private static final Logger logger = Logger.getLogger(ProjectManagerView.class.getName());
+    private static final ProjectManagerService managerService = new ProjectManagerService();
 
-    public static void ProjectManagerDashboard(User projectManager, Scanner sc) {
+    public static void ProjectManagerDashboard(User projectManager,Scanner sc) {
 
         ProjectDao projectDao = new ProjectDao();
         UserDao userDao = new UserDao();
         TaskDao taskDao = new TaskDao();
-        System.out.println("Hi Project Manager: " + projectManager.getUsername());
+
+        System.out.println("\n===== Welcome, Project Manager: " + projectManager.getUsername() + " =====\n");
+
         boolean running = true;
+
         while (running) {
+
             System.out.println("""
                     
                     ===== Project Manager Dashboard =====
@@ -38,169 +36,121 @@ public class ProjectManagerView {
                     2. Add project details (Start project)
                     3. Create tasks for a project
                     4. Assign tasks to builders
-                    5. View projects by client
-                    6. Logout
-                    Enter your choice:
+                    5. List clients
+                    6. View projects by client
+                    7. Logout
                     """);
+            System.out.print("Enter your choice: ");
+            System.out.flush(); // flush stdout before logging
+
             try {
-                String input = sc.nextLine();
+                String input = sc.nextLine().trim();
                 int choice = CommonValidator.validateInteger(input, "Menu choice");
+                logger.info("Project Manager selected menu option: " + choice);
 
                 switch (choice) {
-                    case 1 -> {
-                        managerService.listProjects(projectDao, projectManager);
-                    }
+
+                    case 1 -> managerService.listProjects(projectDao, projectManager);
+
                     case 2 -> {
-                        System.out.println("Enter Project ID to update:");
+                        System.out.println("\n--- Upcoming Projects ---");
+
+                        managerService.listProjects(projectDao, projectManager);
+
+                        System.out.print("\nEnter Project ID to update: ");
                         String projectId = sc.nextLine().trim();
 
-                        System.out.println("Enter Project Description:");
+                        System.out.print("Enter Project Description: ");
                         String description = sc.nextLine().trim();
-                        System.out.println("Enter the duration for this project:");
-                        String durationStr = sc.nextLine();
-                        int duration = CommonValidator.validateInteger(durationStr, "Duration");
 
-                        managerService.addProjectDetails(
-                                projectId, description, duration, projectDao, projectManager
+                        System.out.print("Enter project duration (in days): ");
+                        int durationInput = sc.nextInt();
+                        sc.nextLine();
+
+                        boolean updated = managerService.addProjectDetails(
+                                projectId,
+                                description,
+                                durationInput,
+                                projectDao,
+                                projectManager
                         );
+
+                        if (updated) {
+                            System.out.println("Project updated successfully and moved to IN_PROGRESS.");
+                        } else {
+                            System.out.println("Project update failed. Check logs.");
+                        }
                     }
+
+
                     case 3 -> {
-                        System.out.println("Enter Project ID to create task in:");
+                        System.out.println("\n--- Create Task ---");
+                        System.out.print("Enter Project ID to create task in: ");
+                        System.out.flush();
                         String projectIdForTask = sc.nextLine().trim();
 
-                        System.out.println("Enter Task Name:");
+                        System.out.print("Enter Task Name: ");
+                        System.out.flush();
                         String taskName = sc.nextLine().trim();
 
-                        managerService.createTask(
-                                projectIdForTask, taskName, taskDao, projectDao, projectManager
-                        );
+                        managerService.createTask(projectIdForTask, taskName, taskDao, projectDao, projectManager);
                     }
+
                     case 4 -> {
-
-                        System.out.println("\n--- Your In-Progress Projects ---");
-                        List<Project> inProgressProjects = projectDao.getAll().stream()
-                                .filter(p -> p.getProjectManagerId().equals(projectManager.getId())
-                                        && p.getStatus() == ProjectStatus.InProgress)
-                                .toList();
-
-                        if (inProgressProjects.isEmpty()) {
-                            System.out.println("Nothing to display here. No in-progress projects.");
-                            break;
-                        }
-
-                        inProgressProjects.forEach(p ->
-                                System.out.println(p.getProjectId() + " - " + p.getProjectName())
-                        );
-
-                        System.out.println("Enter Project ID to assign tasks:");
+                        System.out.println("\n--- Assign Task to Builder ---");
+                        System.out.print("Enter Project ID: ");
+                        System.out.flush();
                         String projectId = sc.nextLine().trim();
-                        System.out.println("\n--- Not Started Tasks ---");
 
-                        List<Task> notStartedTasks = taskDao.findByProjectId(projectId).stream()
-                                .filter(t -> t.getStatus() == TaskStatus.NOT_STARTED)
-                                .toList();
-
-                        if (notStartedTasks.isEmpty()) {
-                            System.out.println("Nothing to display here. No NOT_STARTED tasks.");
-                            break;
-                        }
-
-                        notStartedTasks.forEach(t ->
-                                System.out.println(t.getId() + " - " + t.getTaskName())
-                        );
-
-                        System.out.println("Enter Task ID to assign:");
+                        System.out.print("Enter Task ID: ");
+                        System.out.flush();
                         String taskId = sc.nextLine().trim();
 
-                        System.out.println("\n--- Available Builders ---");
-
-                        List<User> builders = userDao.findByRole(Role.BUILDER);
-
-                        if (builders.isEmpty()) {
-                            System.out.println("Nothing to display here. No builders available.");
-                            break;
-                        }
-
-                        builders.forEach(b ->
-                                System.out.println(b.getId() + " - " + b.getUsername())
-                        );
-
-                        System.out.println("Enter Builder ID to assign:");
+                        System.out.print("Enter Builder ID: ");
+                        System.out.flush();
                         String builderId = sc.nextLine().trim();
 
                         managerService.assignTask(projectId, taskId, builderId, taskDao, userDao);
+                        System.out.println("Task assignment attempted.");
+                        System.out.flush();
+                        logger.info("Task assignment attempted: taskId=" + taskId + ", builderId=" + builderId);
                     }
 
                     case 5 -> {
-
-                        // STEP 1: Fetch all projects handled by PM
-                        List<Project> pmProjects =
-                                managerService.getClientsOfPM(projectManager, projectDao);
-
-                        if (pmProjects.isEmpty()) {
-                            System.out.println("No clients associated with you.");
-                            continue;
-                        }
-
-                        // STEP 2: Extract unique clients
-                        System.out.println("\n--- Your Clients ---");
-
-                        List<String> clientIds = pmProjects.stream()
-                                .map(Project::getClientId)
-                                .distinct()
-                                .toList();
-
-                        clientIds.forEach(id -> {
-                            userDao.findById(id).ifPresent(client ->
-                                    System.out.println(client.getId() + " - " + client.getUsername())
-                            );
-                        });
-
-                        System.out.println("\nEnter Client ID:");
-                        String clientId = sc.nextLine().trim();
-
-                        // STEP 3: Get projects of that client
-                        List<Project> clientProjects =
-                                managerService.getProjectsByClientAndPM(clientId, projectManager, projectDao);
-
-                        if (clientProjects.isEmpty()) {
-                            System.out.println("No projects found for this client.");
-                            continue;
-                        }
-
-                        // STEP 4: Print table (VIEW responsibility)
-                        System.out.println("\n================ CLIENT PROJECT DETAILS ================");
-
-                        System.out.printf("%-12s %-20s %-12s %-10s %-15s %-10s %-25s\n",
-                                "Project ID", "Project Name", "Start Date", "Duration",
-                                "Status", "Budget", "Description");
-
-                        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
-
-                        clientProjects.forEach(p -> {
-                            System.out.printf("%-12s %-20s %-12s %-10d %-15s %-10.2f %-25s\n",
-                                    p.getProjectId(),
-                                    p.getProjectName(),
-                                    p.getStartDate(),
-                                    p.getDuration(),
-                                    p.getStatus(),
-                                    p.getBudget(),
-                                    p.getDescription()
-                            );
-                        });
+                        System.out.println("\n--- List of Clients ---");
+                        System.out.flush();
+                        managerService.listClients(userDao);
+                        logger.info("Displayed client list to Project Manager.");
                     }
 
-
                     case 6 -> {
-                        System.out.println("Logging out...");
+                        System.out.println("\n--- View Projects by Client ---");
+                        System.out.print("Enter Client Username: ");
+                        System.out.flush();
+                        String username = sc.nextLine().trim();
+
+                        managerService.viewProjectsByClient(username, userDao, projectDao);
+                        logger.info("Viewed projects for client: " + username);
+                    }
+
+                    case 7 -> {
+                        System.out.println("\nLogging out... Goodbye!");
+                        System.out.flush();
+                        logger.info("Project Manager " + projectManager.getUsername() + " logged out.");
                         running = false;
                     }
 
-                    default -> System.out.println("Invalid choice. Please try again.");
+                    default -> {
+                        System.out.println("Invalid choice. Please select a valid option (1-7).");
+                        System.out.flush();
+                        logger.warning("Invalid menu choice entered: " + choice);
+                    }
                 }
 
             } catch (ValidationException e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("\nError: " + e.getMessage());
+                System.out.flush();
+                logger.warning("Validation error in ProjectManagerDashboard: " + e.getMessage());
             }
         }
     }

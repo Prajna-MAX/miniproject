@@ -60,7 +60,7 @@ public class ProjectStatusScheduler {
                 }
             }
 
-        }, 0, 10, TimeUnit.MINUTES);
+        }, 0, 3, TimeUnit.MINUTES);
     }
 
     public void stop() {

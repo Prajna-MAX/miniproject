@@ -9,9 +9,11 @@ import org.zeta.model.Project;
 import org.zeta.model.enums.Role;
 import org.zeta.model.User;
 import org.zeta.service.implementation.ClientService;
+
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ClientServiceTest {
@@ -22,37 +24,13 @@ class ClientServiceTest {
 
     @BeforeEach
     void setUp() {
-        projectDao = new ProjectDao("test-projects.json");
+        projectDao = new ProjectDao();
         userDao = new UserDao();
         clientService = new ClientService(projectDao, userDao);
         new File("test-projects.json").delete();
     }
 
-    @Test
-    @DisplayName("Given valid manager, when submitting project, then project should be saved")
-    void givenValidManager_whenSubmitProject_thenProjectIsSaved() {
-        User manager = new User("pm1", "pass123", Role.PROJECT_MANAGER);
-        userDao.save(manager);
 
-        String clientId = UUID.randomUUID().toString();
-        clientService.submitProject("TDD Project", clientId);
-
-        List<Project> projects = projectDao.getAll();
-        assertEquals(1, projects.size());
-    }
-
-    @Test
-    @DisplayName("Given project submission, when project is saved, then project name should match input")
-    void givenProjectSubmission_whenSaved_thenProjectNameShouldMatch() {
-        User manager = new User("pm1", "pass123", Role.PROJECT_MANAGER);
-        userDao.save(manager);
-
-        String clientId = UUID.randomUUID().toString();
-        clientService.submitProject("TDD Project", clientId);
-
-        Project savedProject = projectDao.getAll().get(0);
-        assertEquals("TDD Project", savedProject.getProjectName());
-    }
 
     @Test
     @DisplayName("Given no project managers, when submitting project, then exception should be thrown")

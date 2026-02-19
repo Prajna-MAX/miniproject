@@ -52,11 +52,38 @@ public class AuthServiceTest {
     }
 
     @Test
-    void register_shouldReturnFalse_whenValidationFails() {
-        // Empty username should fail validation
+    void register_shouldReturnFalse_whenNameValidationFails() {
         boolean result = authenticationService.register(
                 "", "1234", "1234", Role.CLIENT
         );
+
+        assertFalse(result);
+        verify(userDao, never()).save(any(User.class));
+    }
+    @Test
+    void register_shouldFail_whenPasswordsDoNotMatch() {
+        boolean result = authenticationService.register(
+                "john_doe","123456", "654321", Role.CLIENT
+        );
+
+        assertFalse(result);
+        verify(userDao, never()).save(any(User.class));
+    }
+
+    @Test
+    void register_shouldFail_whenUsernamePatternInvalid() {
+        boolean result = authenticationService.register(
+                "12john",    "123456", "123456", Role.CLIENT
+        );
+
+        assertFalse(result);
+        verify(userDao, never()).save(any(User.class));
+    }
+
+    @Test
+    void register_shouldFail_whenRoleIsNull() {
+        boolean result = authenticationService.register(
+                "john_doe",  "123456", "123456", null);
 
         assertFalse(result);
         verify(userDao, never()).save(any(User.class));
@@ -91,4 +118,3 @@ public class AuthServiceTest {
         );
     }
 }
-

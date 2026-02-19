@@ -131,34 +131,42 @@ public class ProjectManagerService {
         }
     }
 
-    public static void addProjectDetails(String projectId,
-                                         String description,
-                                         int durationInput,
-                                         ProjectDao projectDao,
-                                         User manager) {
+    public boolean addProjectDetails(String projectId,
+                                     String description,
+                                     int durationInput,
+                                     ProjectDao projectDao,
+                                     User manager) {
 
         Optional<Project> projectOpt = projectDao.findById(projectId);
 
         if (projectOpt.isEmpty()) {
-            System.out.println("Project not found.");
-            return;
+            logger.warning("Project not found: " + projectId);
+            return false;
         }
+
         Project project = projectOpt.get();
-        if (!isAuthorized(project, manager)) {
-            logger.warning("You are not authorized to modify this project.");
-            return;
+
+        if (!project.getProjectManagerId().equals(manager.getId())) {
+            logger.warning("Unauthorized update attempt by manager: " + manager.getId());
+            return false;
         }
-        if (project.getStatus() == ProjectStatus.InProgress) {
-            System.out.println("Project is already in progress.");
-            return;
+
+        if (project.getStatus() != ProjectStatus.Upcoming) {
+            logger.warning("Project is not in Upcoming state: " + projectId);
+            return false;
         }
+
         project.setDescription(description);
         project.setDuration(durationInput);
         project.setStatus(ProjectStatus.InProgress);
 
         projectDao.update(project);
-        System.out.println("Project updated successfully. Status set to IN_PROGRESS.");
+
+        logger.info("Project moved from Upcoming → InProgress: " + projectId);
+
+        return true;
     }
+
 
     public List<Project> getClientsOfPM(User projectManager, ProjectDao projectDao) {
 

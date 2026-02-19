@@ -6,10 +6,9 @@ import org.zeta.dao.ProjectDao;
 import org.zeta.dao.TaskDao;
 import org.zeta.model.Project;
 import org.zeta.model.Task;
-import org.zeta.model.TaskStatus;
+import org.zeta.model.enums.TaskStatus;
 import org.zeta.model.User;
 import org.zeta.service.implementation.BuilderService;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -26,12 +25,9 @@ class BuilderServiceTest {
 
     @BeforeEach
     void setup() {
-
         taskDao = mock(TaskDao.class);
-
         builder = new User();
         builder.setId("B1");
-
         Task t1 = new Task();
         t1.setId("T1");
         t1.setBuilderId("B1");
@@ -98,4 +94,5 @@ class BuilderServiceTest {
         System.setOut(originalOut);
         assertTrue(out.toString().contains("ProjectAlpha - Task1"));
     }
+
 }

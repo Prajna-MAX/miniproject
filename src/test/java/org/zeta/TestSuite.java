@@ -8,9 +8,9 @@ import org.zeta.service.implementation.ProjectManagerService;
         org.zeta.AuthServiceTest.class,
         org.zeta.ClientServiceTest.class,
         org.zeta.ProjectManagerTest.class,
-        org.zeta.BuilderServiceTest.class
+        org.zeta.BuilderServiceTest.class,
+        org.zeta.ProjectStatusSchedulerTest.class,
 })
 public class TestSuite {
 }
-
 

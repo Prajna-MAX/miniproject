@@ -1,12 +1,10 @@
 [ {
-
-  "projectId" : "bb0cc1bc-a102-4473-9da0-76484e1fa9f7",
-  "projectName" : "Godrej",
   "projectId" : "4b5820db-167f-4a86-92cd-df013cdb4593",
   "projectName" : "Satva",
   "startDate" : null,
   "duration" : 30,
   "status" : "InProgress",
+  "budget" : 0.0,
   "description" : "Construction of four floor building",
   "clientId" : "a72044ff-ee40-4215-a6d7-9a57b62a6156",
   "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
@@ -16,24 +14,27 @@
   "startDate" : null,
   "duration" : 0,
   "status" : "Upcoming",
+  "budget" : 0.0,
   "description" : null,
   "clientId" : "a72044ff-ee40-4215-a6d7-9a57b62a6156",
-  "projectManagerId" : "f9b090c7-7ad5-4e71-9e38-ebfc89c311ec"
+  "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
 }, {
   "projectId" : "a2cdf671-937a-4e0d-8750-7821637573ad",
   "projectName" : "Sobha",
   "startDate" : null,
   "duration" : 0,
   "status" : "Upcoming",
+  "budget" : 0.0,
   "description" : null,
   "clientId" : "a72044ff-ee40-4215-a6d7-9a57b62a6156",
-  "projectManagerId" : "49f5a944-afc8-4b5c-abd2-a9cdb81ad2c5"
+  "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
 }, {
   "projectId" : "6bf6030a-b7ea-4b10-b071-6f445b5c0ae8",
   "projectName" : "Brigade",
   "startDate" : null,
   "duration" : 60,
   "status" : "InProgress",
+  "budget" : 0.0,
   "description" : "A Bangalore based project, for accomodating office spaces to be build around 2.5 acres land",
   "clientId" : "aac51457-0fca-41c2-8f10-94286808b9a3",
   "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
@@ -43,8 +44,168 @@
   "startDate" : null,
   "duration" : 3,
   "status" : "InProgress",
+  "budget" : 0.0,
   "description" : "this is a small project",
   "clientId" : "aac51457-0fca-41c2-8f10-94286808b9a3",
   "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
-
+}, {
+  "projectId" : "2c4c3591-9224-4c5c-9b70-e24a3045c525",
+  "projectName" : "Zeta",
+  "startDate" : null,
+  "duration" : 6000,
+  "status" : "Completed",
+  "budget" : 0.0,
+  "description" : "this is a nice project",
+  "clientId" : "31adcac6-69ce-4902-be3c-4b5bbe5d20cf",
+  "projectManagerId" : "624b8652-c2f0-4b70-a5b4-28f90a1152bd"
+}, {
+  "projectId" : "27b0cf9e-dc36-4723-9987-f05a2659a042",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "f50fa9d5-618e-49c2-be98-194b9a3a1cb4",
+  "projectManagerId" : "f35f7e05-b386-4c52-a91a-8bbb5766f990"
+}, {
+  "projectId" : "fd77cad2-c1e4-4372-b7cc-d929e18dede7",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "f50fa9d5-618e-49c2-be98-194b9a3a1cb4",
+  "projectManagerId" : "570949ec-e628-405b-91dc-717f96ff4502"
+}, {
+  "projectId" : "11b1caca-8d33-4a03-a3f9-1267b158ca05",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "ea6b7c87-96ce-49cf-86ce-cf8bc0b88a41",
+  "projectManagerId" : "f84a4b1a-f64c-46b9-a830-a5b22e5d7f12"
+}, {
+  "projectId" : "e1befab8-c227-4fed-8673-fad1986a8273",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "f3aa1f21-8632-4e15-b926-610148415461",
+  "projectManagerId" : "8cd0d6d5-816c-4731-972f-67b64dfcbc72"
+}, {
+  "projectId" : "23797bf5-6bfc-4940-b08b-8a9f7e040630",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "f3aa1f21-8632-4e15-b926-610148415461",
+  "projectManagerId" : "79b68830-d901-4e30-8b08-231980ec7b51"
+}, {
+  "projectId" : "42e8ecae-4ddd-4605-a9d2-946726424c36",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "a50b2213-de16-4774-8adf-3b4118e31feb",
+  "projectManagerId" : "5ce99844-0241-43dc-ac27-a4a6be8d379d"
+}, {
+  "projectId" : "6bd1e989-147b-4657-a44d-213bce0adec0",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "cfdf1a51-d072-4fec-8c1a-c256a3e92221",
+  "projectManagerId" : "78005f0d-53e4-4c7a-892e-458593d98d01"
+}, {
+  "projectId" : "8688cb1b-6670-4c4d-b025-182954bfce90",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "cfdf1a51-d072-4fec-8c1a-c256a3e92221",
+  "projectManagerId" : "8cd0d6d5-816c-4731-972f-67b64dfcbc72"
+}, {
+  "projectId" : "3df343d0-9f33-48a3-90cb-0d5cb2648948",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "25bf39f4-9477-47da-bdc0-ae80c1f0b5a5",
+  "projectManagerId" : "164e5eb6-f080-41c0-9b01-c79ed96b6141"
+}, {
+  "projectId" : "76b8987e-7245-4fac-9fc9-dc6f420687b3",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "c2503912-0f97-4cef-95cf-2c0531f55b53",
+  "projectManagerId" : "1e39abdb-3320-4525-8b0e-645c60629130"
+}, {
+  "projectId" : "cca80563-2ff6-4839-9761-5a6a09b19077",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "c2503912-0f97-4cef-95cf-2c0531f55b53",
+  "projectManagerId" : "2c4df46a-080c-47dc-b395-17d52acd0f5c"
+}, {
+  "projectId" : "0c0ff86f-1f41-41cb-9392-a7edabec628b",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "088f6d21-3a04-4cee-8651-76b5c0ed6df9",
+  "projectManagerId" : "5ce99844-0241-43dc-ac27-a4a6be8d379d"
+}, {
+  "projectId" : "0478c9b0-00bd-4d4e-bdef-960d34e20ffc",
+  "projectName" : "Project A",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "88f39132-658d-4150-be86-1dbe93952a3d",
+  "projectManagerId" : "ee184fad-1f25-4979-b44f-e87a46f4a6e1"
+}, {
+  "projectId" : "6f121091-175e-43e9-8317-0f5e269d247a",
+  "projectName" : "Project B",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "88f39132-658d-4150-be86-1dbe93952a3d",
+  "projectManagerId" : "714700de-8dd4-4c8e-baa1-85b6a12516a1"
+}, {
+  "projectId" : "65f68713-870b-41ae-a478-87771a45081a",
+  "projectName" : "Project C",
+  "startDate" : null,
+  "duration" : 0,
+  "status" : "Upcoming",
+  "budget" : 0.0,
+  "description" : null,
+  "clientId" : "dee5f3d7-3a55-457a-b8b4-d0cb754a9765",
+  "projectManagerId" : "79defc90-a203-4686-9039-3168918dd01e"
 } ]

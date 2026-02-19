@@ -44,11 +44,4 @@ public class UserDao extends BaseDao<User> {
                 .toList();
     }
 
-    public void update(User updatedUser) {
-        findById(updatedUser.getId()).ifPresent(existing -> {
-            dataList.remove(existing);
-            dataList.add(updatedUser);
-            saveToFile();
-        });
-    }
 }
