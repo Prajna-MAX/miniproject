@@ -177,7 +177,7 @@ public class Main {
             }
         }
 
-        scanner.close();
+
         logger.info("Application terminated.");
     }
 }
